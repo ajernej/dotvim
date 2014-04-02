@@ -24,6 +24,7 @@ Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
+Plugin 'terryma/vim-expand-region'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -143,7 +144,7 @@ xmap <leader>/ :TComment<cr>
 nmap <silent> <leader>b :b#<cr>
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
-nmap <silent> <leader>ub :PluginInstall<cr>
+nmap <silent> <leader>ub :PluginClean!<cr>:PluginInstall<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIG
@@ -193,7 +194,9 @@ autocmd VimEnter * set vb t_vb=
 autocmd FileType javascript inoremap ; <esc>A;
 autocmd FileType javascript inoremap . <esc>A.
 
-cd /Volumes/dev/bm/
+if isdirectory('/Volumes/dev/bm')
+  cd /Volumes/dev/bm
+endif
 
 " vim:fdm=marker:
 "
