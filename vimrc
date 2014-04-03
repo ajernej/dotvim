@@ -24,7 +24,6 @@ Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'terryma/vim-expand-region'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " BASIC EDITING CONFIGURATION
@@ -95,7 +94,6 @@ let mapleader = ","
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " COLOR AND GUI
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-set transparency=1
 set background=dark
 colorscheme monokaibright
 
@@ -138,13 +136,12 @@ endfunction
 call MapCR()
 
 nmap <leader>ev :e ~/.vim/vimrc<cr>
-nmap <leader>ub :BundleInstall!<cr>
 nmap <leader>/ :TComment<cr>
 xmap <leader>/ :TComment<cr>
 nmap <silent> <leader>b :b#<cr>
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
-nmap <silent> <leader>ub :PluginClean!<cr>:PluginInstall<cr>
+nmap <silent> <leader>ub :PluginInstall!<cr>
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " PLUGINS CONFIG
