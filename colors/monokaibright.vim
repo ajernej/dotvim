@@ -109,8 +109,8 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " gui
-" hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#2B2B2B gui=NONE
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 gui=NONE
+hi Cursor ctermfg=148 ctermbg=235 cterm=NONE guifg=#a6e22e guibg=#272822 gui=inverse
 hi CursorLine ctermbg=237 guibg=#333435
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
@@ -123,9 +123,7 @@ hi MoreMsg gui=NONE
 hi ModeMsg gui=NONE
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-" hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#888888 guibg=NONE gui=NONE
-hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guibg=NONE gui=NONE
-hi Search ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=reverse
+hi Search ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
@@ -174,5 +172,9 @@ Hi lessClass GREEN
 
 Hi SyntasticErrorSign RED
 Hi SyntasticWarningSign YELLOW
+
+Hi CtrlPMode1 BLUE
+Hi CtrlPMatch YELLOW
+Hi CtrlPNoEntries RED
 
 delcommand Hi

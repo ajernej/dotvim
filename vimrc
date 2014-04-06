@@ -6,29 +6,57 @@ set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGINS
+" PLUGINS 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-
 Plugin 'gmarik/vundle'
 
 Plugin 'pangloss/vim-javascript'
-Plugin 'SirVer/ultisnips'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Raimondi/delimitMate'
 Plugin 'Shougo/neocomplete.vim'
-Plugin 'honza/vim-snippets'
 Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
+Plugin 'othree/javascript-libraries-syntax.vim'
+Plugin 'SirVer/ultisnips'
+Plugin 'honza/vim-snippets'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" BASIC EDITING CONFIGURATION
+" MISC KEY MAPS
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let mapleader = ","
+nmap <tab> %
+nmap k gk
+nmap j gj
+nnoremap K :bd<cr>
+map . .`[
 
+" Move around splits with <c-hjkl>
+nnoremap <c-j> <c-w>j
+nnoremap <c-k> <c-w>k
+nnoremap <c-h> <c-w>h
+nnoremap <c-l> <c-w>l
+
+nnoremap <silent> <cr> :w<cr>
+nnoremap <silent> <space> :nohlsearch<cr>
+nnoremap Q @q
+
+nmap <silent> <leader>ev :e ~/.vim/vimrc<cr>
+nmap <silent> <leader>/ :TComment<cr>
+xmap <silent> <leader>/ :TComment<cr>
+nmap <silent> <leader>b :b#<cr>
+nmap <silent> <leader>p :CtrlP<cr>
+nmap <silent> <leader>t :CtrlPMRU<cr>
+nmap <silent> <leader>ub :PluginInstall<cr>
+map <c-j> }
+map <c-k> {
+
+" BASIC EDITING CONFIGURATION"{{{
+""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
 set mouse=a
 " allow unsaved background buffers and remember marks/undo for them
@@ -89,10 +117,12 @@ set wildignore+=.git,node_modules/**
 set pumheight=10
 set previewheight=1
 
-let mapleader = ","
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" COLOR AND GUI
+" Get rid of wrapping
+set textwidth=0
+set wrapmargin=0
+set nowrap
+"}}}
+" COLOR AND GUI"{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 colorscheme monokaibright
@@ -109,49 +139,20 @@ set guicursor+=n-v-ve:blinkoff0-Cursor
 
 set statusline=%<%f\ %h%m%r
 set statusline+=%=
-set statusline+=[%Y]\ 
-set statusline+=[%{&ff}]\ 
-set statusline+=%{\"[\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"]\\"}%k\ 
-set statusline+=%P "
-
+set statusline+=\ %Y\ \|\ 
+set statusline+=%{&ff}\ \|\ 
+set statusline+=%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\\"}%k\ 
+"}}}
+" PLUGINS CONFIG"{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-nmap <tab> %
-nmap k gk
-nmap j gj
-nnoremap K :bd<cr>
-map . .`[
-
-" Move around splits with <c-hjkl>
-nnoremap <c-j> <c-w>j
-nnoremap <c-k> <c-w>k
-nnoremap <c-h> <c-w>h
-nnoremap <c-l> <c-w>l
-
-" Clear the search buffer when hitting return
-function! MapCR()
-	nnoremap <silent> <cr> :nohlsearch<cr>
-endfunction
-call MapCR()
-
-nmap <leader>ev :e ~/.vim/vimrc<cr>
-nmap <leader>/ :TComment<cr>
-xmap <leader>/ :TComment<cr>
-nmap <silent> <leader>b :b#<cr>
-nmap <silent> <leader>p :CtrlP<cr>
-nmap <silent> <leader>t :CtrlPMRU<cr>
-nmap <silent> <leader>ub :PluginInstall!<cr>
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGINS CONFIG
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+let g:used_javascript_libs = 'underscore,backbone'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_clear_cache_on_exit = 0
 let g:syntastic_auto_loc_list = 1
 let g:syntastic_auto_jump = 1
 let g:syntastic_loc_list_height = 3
@@ -171,9 +172,8 @@ function! g:smart_tab()
   return ""
 endfunction
 let g:UltiSnipsJumpForwardTrigger="<tab>"
-
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" CUSTOM AUTOCMDS
+"}}}
+" CUSTOM AUTOCMDS"{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Reload on save
 autocmd! bufwritepost ~/.vim/vimrc source ~/.vim/vimrc
@@ -190,10 +190,10 @@ autocmd VimEnter * set vb t_vb=
 " FileType
 autocmd FileType javascript inoremap ; <esc>A;
 autocmd FileType javascript inoremap . <esc>A.
+"}}}
 
 if isdirectory('/Volumes/dev/bm')
   cd /Volumes/dev/bm
 endif
 
 " vim:fdm=marker:
-"
