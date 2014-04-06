@@ -21,9 +21,10 @@ Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
-Plugin 'othree/javascript-libraries-syntax.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
+Plugin 'godlygeek/tabular'
+Plugin 'gerw/vim-HiLinkTrace'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " MISC KEY MAPS
@@ -41,8 +42,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-nnoremap <silent> <cr> :w<cr>
-nnoremap <silent> <space> :nohlsearch<cr>
+nnoremap <silent> <cr> :nohlsearch<cr>
 nnoremap Q @q
 
 nmap <silent> <leader>ev :e ~/.vim/vimrc<cr>
@@ -52,8 +52,10 @@ nmap <silent> <leader>b :b#<cr>
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
 nmap <silent> <leader>ub :PluginInstall<cr>
-map <c-j> }
-map <c-k> {
+nmap <silent> <leader>a= :Tabularize /=<CR>
+nmap <silent> <leader>a: :Tabularize /:<CR>
+xmap <silent> <leader>a= :Tabularize /=<CR>
+xmap <silent> <leader>a: :Tabularize /:<CR>
 
 " BASIC EDITING CONFIGURATION"{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -115,7 +117,7 @@ set autoread
 
 set wildignore+=.git,node_modules/**
 set pumheight=10
-set previewheight=1
+let &previewheight=(&lines / 3)
 
 " Get rid of wrapping
 set textwidth=0
@@ -136,6 +138,7 @@ set guioptions-=T
 set guioptions-=m
 set guioptions-=r
 set guicursor+=n-v-ve:blinkoff0-Cursor
+set guicursor+=i:ver25-iCursor
 
 set statusline=%<%f\ %h%m%r
 set statusline+=%=
@@ -145,7 +148,6 @@ set statusline+=%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?
 "}}}
 " PLUGINS CONFIG"{{{
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-let g:used_javascript_libs = 'underscore,backbone'
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let delimitMate_expand_cr = 1

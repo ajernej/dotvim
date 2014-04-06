@@ -108,11 +108,13 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" gui
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 gui=NONE
-hi Cursor ctermfg=148 ctermbg=235 cterm=NONE guifg=#a6e22e guibg=#272822 gui=inverse
-hi CursorLine ctermbg=237 guibg=#333435
+hi Cursor ctermbg=148 ctermfg=235 cterm=NONE guifg=#a6e22e guibg=#272822 gui=inverse
+hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
+
+hi CursorLine ctermbg=NONE guibg=NONE
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
+hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#414243 gui=NONE guifg=#E6E1DC
 hi StatusLineNC guibg=#414243 gui=NONE
@@ -123,7 +125,7 @@ hi MoreMsg gui=NONE
 hi ModeMsg gui=NONE
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-hi Search ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
+hi Search ctermfg=186 ctermbg=NONE cterm=inverse guifg=#e6db74 guibg=NONE gui=inverse
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
@@ -131,10 +133,11 @@ hi Folded ctermfg=102 ctermbg=NONE cterm=NONE guifg=#888888 guibg=NONE gui=NONE
 
 hi Pmenu ctermbg=white ctermfg=235 guibg=white guifg=#2b2b2b
 hi PmenuSel ctermfg=235 ctermbg=81 guibg=#97b5dc guifg=#2B2B2B
+hi VertSplit guibg=#414243 gui=NONE guifg=#414243
+hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 hi SignColumn ctermbg=NONE guibg=NONE
 
-" colors
 hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
@@ -145,6 +148,11 @@ hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 guibg=NONE gui=itali
 command -nargs=* Hi hi! def link <args>
 
 Hi Type BLUE
+
+hi DiffText ctermfg=148 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=inverse
+hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
+Hi DiffAdd GREEN
+Hi DiffDelete RED
 
 Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE
@@ -176,5 +184,9 @@ Hi SyntasticWarningSign YELLOW
 Hi CtrlPMode1 BLUE
 Hi CtrlPMatch YELLOW
 Hi CtrlPNoEntries RED
+
+Hi gitcommitDiscardedType RED
+Hi gitcommitSelectedType GREEN
+hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
 
 delcommand Hi
