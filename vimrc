@@ -9,7 +9,6 @@ call vundle#rc()
 " PLUGINS 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 Plugin 'gmarik/vundle'
-
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
@@ -46,6 +45,8 @@ nnoremap <c-l> <c-w>l
 
 nnoremap <silent> <esc><esc> :nohlsearch<cr>
 nnoremap <silent> <cr> :w<cr>
+nnoremap <space> za
+nnoremap <S-space> zM
 
 nmap <silent> <leader>ev :e ~/.vim/vimrc<cr>
 nmap <silent> <leader>/ :TComment<cr>
@@ -60,7 +61,6 @@ xmap <silent> <leader>a= :Tabularize /=<CR>
 xmap <silent> <leader>a: :Tabularize /:<CR>
 
 " BASIC EDITING CONFIGURATION"{{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set encoding=utf-8
 set mouse=a
 " allow unsaved background buffers and remember marks/undo for them
@@ -68,9 +68,9 @@ set hidden
 " remember more commands and search history
 set history=10000
 set expandtab
-set tabstop=2
-set shiftwidth=2
-set softtabstop=2
+set tabstop=3
+set shiftwidth=3
+set softtabstop=3
 
 set autoindent
 
@@ -127,7 +127,6 @@ set wrapmargin=0
 set nowrap
 "}}}
 " COLOR AND GUI"{{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 set background=dark
 colorscheme monokaibright
 
@@ -150,7 +149,6 @@ set statusline+=%{&ff}\ \|\
 set statusline+=%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\\"}%k\ 
 "}}}
 " PLUGINS CONFIG"{{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 let g:neocomplete#enable_at_startup = 1
 let g:neocomplete#enable_smart_case = 1
 let delimitMate_expand_cr = 1
@@ -159,7 +157,6 @@ let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclu
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_clear_cache_on_exit = 0
 let g:syntastic_auto_jump = 1
-let g:user_emmet_expandabbr_key = '<S-space>'
 
 function! g:smart_tab()
   if (matchstr(getline("."), '^\s*#') != "") || (matchstr(getline("."), '^\s*\.') != "")
@@ -182,6 +179,7 @@ function! g:smart_tab()
 endfunction
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "}}}
+" AUTOCMD"{{{
 " Reload on save
 autocmd! bufwritepost ~/.vim/vimrc source ~/.vim/vimrc
 autocmd! bufwritepost monokaibright.vim colorscheme monokaibright
@@ -192,7 +190,6 @@ autocmd VimEnter * xmap <s-tab> <gv
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " Smart Tab
 autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:smart_tab()<cr>"
-
 " No bell
 autocmd VimEnter * set vb t_vb=
 " FileType
