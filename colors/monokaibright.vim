@@ -109,7 +109,7 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 gui=NONE
-hi Cursor ctermbg=148 ctermfg=235 cterm=NONE guifg=#a6e22e guibg=#272822 gui=inverse
+" hi Cursor ctermbg=148 ctermfg=235 cterm=NONE guifg=#a6e22e guibg=#272822 gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 
 hi CursorLine ctermbg=NONE guibg=NONE
@@ -126,6 +126,8 @@ hi ModeMsg gui=NONE
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
 hi Search ctermfg=186 ctermbg=NONE cterm=inverse guifg=#e6db74 guibg=NONE gui=inverse
+" hi Search ctermfg=white ctermbg=NONE cterm=inverse guifg=white guibg=NONE gui=inverse
+hi Search ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
@@ -157,7 +159,7 @@ Hi DiffDelete RED
 Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE
 Hi jsFuncCall BLUE
-Hi jsGlobalObjects BLUE
+" Hi jsGlobalObjects BLUE
 Hi jsSpecial VIOLET
 
 Hi htmlTag WHITE
@@ -188,5 +190,7 @@ Hi CtrlPNoEntries RED
 Hi gitcommitDiscardedType RED
 Hi gitcommitSelectedType GREEN
 hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
+
+Hi qfFileName YELLOW
 
 delcommand Hi

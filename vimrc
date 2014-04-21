@@ -24,6 +24,8 @@ Plugin 'kien/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'godlygeek/tabular'
+Plugin 'mattn/emmet-vim'
+Plugin 'tmhedberg/matchit'
 Plugin 'gerw/vim-HiLinkTrace'
 
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
@@ -42,8 +44,8 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-nnoremap <silent> <cr> :nohlsearch<cr>
-nnoremap Q @q
+nnoremap <silent> <esc><esc> :nohlsearch<cr>
+nnoremap <silent> <cr> :w<cr>
 
 nmap <silent> <leader>ev :e ~/.vim/vimrc<cr>
 nmap <silent> <leader>/ :TComment<cr>
@@ -117,7 +119,7 @@ set autoread
 
 set wildignore+=.git,node_modules/**
 set pumheight=10
-let &previewheight=(&lines / 3)
+let &previewheight=&lines / 3
 
 " Get rid of wrapping
 set textwidth=0
@@ -131,6 +133,7 @@ colorscheme monokaibright
 
 set list
 set listchars=tab:\ \ ,eol:¬
+set fillchars=fold:\ 
 set guifont=Menlo:h14
 
 set linespace=2
@@ -155,28 +158,30 @@ let delimitMate_expand_space = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_clear_cache_on_exit = 0
-let g:syntastic_auto_loc_list = 1
 let g:syntastic_auto_jump = 1
-let g:syntastic_loc_list_height = 3
+let g:user_emmet_expandabbr_key = '<S-space>'
 
 function! g:smart_tab()
-  call UltiSnips#ExpandSnippet()
-  if g:ulti_expand_res == 0
-    if pumvisible()
-      return "\<C-n>"
-    else
-      call UltiSnips#JumpForwards()
-      if g:ulti_jump_forwards_res == 0
-        return "\<tab>"
+  if (matchstr(getline("."), '^\s*#') != "") || (matchstr(getline("."), '^\s*\.') != "")
+    call emmet#expandAbbr(3, "")
+    return "\<esc>cit\<cr>\<esc>O"
+  else
+    call UltiSnips#ExpandSnippet()
+    if g:ulti_expand_res == 0
+      if pumvisible()
+        return "\<C-n>"
+      else
+        call UltiSnips#JumpForwards()
+        if g:ulti_jump_forwards_res == 0
+          return "\<tab>"
+        endif
       endif
     endif
+    return ""
   endif
-  return ""
 endfunction
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "}}}
-" CUSTOM AUTOCMDS"{{{
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 " Reload on save
 autocmd! bufwritepost ~/.vim/vimrc source ~/.vim/vimrc
 autocmd! bufwritepost monokaibright.vim colorscheme monokaibright
@@ -187,6 +192,7 @@ autocmd VimEnter * xmap <s-tab> <gv
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
 " Smart Tab
 autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:smart_tab()<cr>"
+
 " No bell
 autocmd VimEnter * set vb t_vb=
 " FileType
