@@ -12,7 +12,7 @@ let g:colors_name = "MonokaiBright"
 
 hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 hi Visual ctermfg=NONE ctermbg=130 cterm=NONE guifg=NONE guibg=#9d550f gui=NONE
-hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
+" hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi ColorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi LineNr ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=NONE
@@ -109,9 +109,9 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 gui=NONE
+hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 
-hi CursorLine ctermbg=NONE guibg=NONE
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
 hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
@@ -122,28 +122,28 @@ hi SpecialKey ctermfg=59 ctermbg=NONE cterm=NONE guifg=#3b3a32 guibg=NONE gui=NO
 hi Question gui=NONE
 hi MoreMsg gui=NONE
 hi ModeMsg gui=NONE
+hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi FoldMarker guifg=#888888 guibg=NONE ctermbg=NONE gui=inverse
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-hi Search ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
+hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=gray guibg=#272822 gui=inverse
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
-hi MatchParen ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-hi Folded ctermfg=102 ctermbg=NONE cterm=NONE guifg=#888888 guibg=NONE gui=NONE
+hi MatchParen ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=inverse
 
 hi Pmenu ctermbg=white ctermfg=235 guibg=white guifg=#2b2b2b
 hi PmenuSel ctermfg=235 ctermbg=81 guibg=#97b5dc guifg=#2B2B2B
 hi VertSplit guibg=#414243 gui=NONE guifg=#414243
-hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 hi SignColumn ctermbg=NONE guibg=NONE
+hi SyntasticWarningSign ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
 
-hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
-hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
-hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
-hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
-hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 guibg=NONE gui=italic
+hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=NONE
+hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff gui=NONE
+hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
+hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
+hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
+hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 gui=italic
 
 command -nargs=* Hi hi! def link <args>
 
@@ -153,6 +153,8 @@ hi DiffText ctermfg=148 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=
 hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 Hi DiffAdd GREEN
 Hi DiffDelete RED
+
+hi Folded guifg=#888888 guibg=NONE ctermbg=NONE gui=NONE
 
 Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE
@@ -177,9 +179,6 @@ Hi cssSelectorOp RED
 Hi lessNestedSelector GREEN
 Hi lessClass GREEN
 
-Hi SyntasticErrorSign RED
-Hi SyntasticWarningSign YELLOW
-
 Hi CtrlPMode1 BLUE
 Hi CtrlPMatch YELLOW
 Hi CtrlPNoEntries RED
@@ -190,6 +189,10 @@ hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE 
 
 Hi qfFileName YELLOW
 
+hi SpellBad ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
+hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
+
 delcommand Hi
 
-match FoldMarker /^.*{{{\|^.*}}}/
+" match YELLOW /^.*{{{\|^.*}}}/
+match Todo /FIXME\|TODO/

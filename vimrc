@@ -1,13 +1,13 @@
+" -"{{{
 autocmd!
 set nocompatible
 filetype off
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
+"}}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" PLUGINS 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" PLUGINS "{{{
 Plugin 'gmarik/vundle'
 Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
@@ -22,19 +22,17 @@ Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'godlygeek/tabular'
 Plugin 'mattn/emmet-vim'
 Plugin 'tmhedberg/matchit'
-Plugin 'gerw/vim-HiLinkTrace'
+" Plugin 'gerw/vim-HiLinkTrace'
+"}}}
 
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" MISC KEY MAPS
-""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
+" MISC KEY MAPS"{{{
 let mapleader = ","
 nmap <tab> %
 nmap k gk
 nmap j gj
-nnoremap K :bd<cr>
+nnoremap <silent>K :bd<cr>
 map . .`[
 
 " Move around splits with <c-hjkl>
@@ -54,12 +52,7 @@ xmap <silent> <leader>/ :TComment<cr>
 nmap <silent> <leader>b :b#<cr>
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
-nmap <silent> <leader>ub :PluginInstall<cr>
-nmap <silent> <leader>a= :Tabularize /=<CR>
-nmap <silent> <leader>a: :Tabularize /:<CR>
-xmap <silent> <leader>a= :Tabularize /=<CR>
-xmap <silent> <leader>a: :Tabularize /:<CR>
-
+"}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
 set mouse=a
@@ -81,7 +74,6 @@ set incsearch
 set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
-set cursorline
 set number
 set cmdheight=1
 set switchbuf=useopen
@@ -115,6 +107,7 @@ set clipboard=unnamed
 " Get rid of the left scrollbar in vsplit
 set go-=L
 set foldmethod=marker
+set foldcolumn=0
 set autoread
 
 set wildignore+=.git,node_modules/**
@@ -125,6 +118,31 @@ let &previewheight=&lines / 3
 set textwidth=0
 set wrapmargin=0
 set nowrap
+
+set foldtext=MyFoldText()
+function! MyFoldText()
+   let comment = substitute(&commentstring, '%s', '{{{', '')
+   let foldstart = substitute(getline(v:foldstart), comment, '', '')
+   let foldstart = substitute(foldstart,'{{{', '', '')
+   let comment = substitute(&commentstring, '%s', '}}}', '')
+   let foldend = substitute(getline(v:foldend), comment, '', '')
+   let foldend = substitute(foldend,'}}}', '', '')
+   let foldend = substitute(foldend,'^\s\+', '', '')
+   if (foldend == "")
+      return foldstart
+   else
+      return foldstart . " ... " . foldend
+   endif
+endfunction
+
+function! SL(function)
+  if exists('*'.a:function)
+    return call(a:function,[])
+  else
+    return ''
+  endif
+endfunction
+
 "}}}
 " COLOR AND GUI"{{{
 set background=dark
@@ -142,11 +160,13 @@ set guioptions-=r
 set guicursor+=n-v-ve:blinkoff0-Cursor
 set guicursor+=i:ver25-iCursor
 
-set statusline=%<%f\ %h%m%r
+set statusline=%<%.99f\ %h%w%m%r\ 
+set statusline+=%{SL('fugitive#statusline')}\ %#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*
 set statusline+=%=
-set statusline+=\ %Y\ \|\ 
-set statusline+=%{&ff}\ \|\ 
-set statusline+=%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\\"}%k\ 
+set statusline+=\ %y\ 
+set statusline+=[%{&ff}]\ 
+set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\\"}%k]\ 
+
 "}}}
 " PLUGINS CONFIG"{{{
 let g:neocomplete#enable_at_startup = 1
@@ -155,14 +175,19 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_clear_cache_on_exit = 0
+let g:ctrlp_clear_cache_on_exit = 1
 let g:syntastic_auto_jump = 1
+let g:syntastic_enable_signs = 0
+let g:syntastic_mode_map = {
+   \ 'mode': 'active',
+   \ 'passive_filetypes': ['html'] }
+
 
 function! g:smart_tab()
-  if (matchstr(getline("."), '^\s*#') != "") || (matchstr(getline("."), '^\s*\.') != "")
-    call emmet#expandAbbr(3, "")
-    return "\<esc>cit\<cr>\<esc>O"
-  else
+  " if (matchstr(getline("."), '^\s*#') != "") || (matchstr(getline("."), '^\s*\.') != "")
+  "   call emmet#expandAbbr(3, "")
+  "   return "\<esc>cit\<cr>\<esc>O"
+  " else
     call UltiSnips#ExpandSnippet()
     if g:ulti_expand_res == 0
       if pumvisible()
@@ -175,7 +200,7 @@ function! g:smart_tab()
       endif
     endif
     return ""
-  endif
+  " endif
 endfunction
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "}}}
@@ -193,12 +218,14 @@ autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R
 " No bell
 autocmd VimEnter * set vb t_vb=
 " FileType
-autocmd FileType javascript inoremap ; <esc>A;
-autocmd FileType javascript inoremap . <esc>A.
+" autocmd FileType javascript inoremap ; <esc>A;
+" autocmd FileType javascript inoremap . <esc>A.
 "}}}
 
+" cd"{{{
 if isdirectory('/Volumes/dev/bm')
   cd /Volumes/dev/bm
 endif
+"}}}
 
 " vim:fdm=marker:
