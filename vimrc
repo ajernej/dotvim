@@ -24,6 +24,7 @@ Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'tmhedberg/matchit'
+Plugin 'mustache/vim-mustache-handlebars'
 " Plugin 'gerw/vim-HiLinkTrace'
 "}}}
 
@@ -112,7 +113,7 @@ set autoread
 
 set wildignore+=.git,node_modules/**
 set pumheight=10
-let &previewheight=&lines / 3
+let &previewheight=&lines / 2
 
 " Get rid of wrapping
 set textwidth=0
@@ -120,13 +121,17 @@ set wrapmargin=0
 set nowrap
 
 set foldtext=MyFoldText()
+function! StripFoldText(f, m)
+   let c = substitute(&commentstring, '%s', a:m, '')
+   let f = substitute(a:f, c, '', '')
+   let f = substitute(f, a:m, '', '')
+   return f
+endfunction
 function! MyFoldText()
-   let comment = substitute(&commentstring, '%s', '{{{', '')
-   let foldstart = substitute(getline(v:foldstart), comment, '', '')
-   let foldstart = substitute(foldstart,'{{{', '', '')
-   let comment = substitute(&commentstring, '%s', '}}}', '')
-   let foldend = substitute(getline(v:foldend), comment, '', '')
-   let foldend = substitute(foldend,'}}}', '', '')
+   let markerstart = strpart(&foldmarker, 0, 3)
+   let markerend = strpart(&foldmarker, 4, 3)
+   let foldstart = StripFoldText(getline(v:foldstart), markerstart)
+   let foldend = StripFoldText(getline(v:foldend), markerend)
    let foldend = substitute(foldend,'^\s\+', '', '')
    if (foldend == "")
       return foldstart
@@ -217,6 +222,8 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:smart_tab()<cr>"
 " No bell
 autocmd VimEnter * set vb t_vb=
+autocmd Syntax mustache set foldmarker=[[[,]]]
+autocmd Syntax mustache set commentstring={{!%s}}
 " FileType
 " autocmd FileType javascript inoremap ; <esc>A;
 " autocmd FileType javascript inoremap . <esc>A.
