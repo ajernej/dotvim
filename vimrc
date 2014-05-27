@@ -186,26 +186,23 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
    \ 'mode': 'active',
    \ 'passive_filetypes': ['html'] }
+let g:user_emmet_expandabbr_key = '<S-space>'
 
 
 function! g:smart_tab()
-  " if (matchstr(getline("."), '^\s*#') != "") || (matchstr(getline("."), '^\s*\.') != "")
-  "   call emmet#expandAbbr(3, "")
-  "   return "\<esc>cit\<cr>\<esc>O"
-  " else
-    call UltiSnips#ExpandSnippet()
-    if g:ulti_expand_res == 0
+   call UltiSnips#ExpandSnippet()
+   if g:ulti_expand_res == 0
       if pumvisible()
-        return "\<C-n>"
+         return "\<C-n>"
       else
-        call UltiSnips#JumpForwards()
-        if g:ulti_jump_forwards_res == 0
-          return "\<tab>"
-        endif
+         call UltiSnips#JumpForwards()
+         if g:ulti_jump_forwards_res == 0
+            return "\<tab>"
+         endif
       endif
-    endif
-    return ""
-  " endif
+   endif
+   return ""
+   " endif
 endfunction
 let g:UltiSnipsJumpForwardTrigger="<tab>"
 "}}}
@@ -222,14 +219,14 @@ autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "norm
 autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:smart_tab()<cr>"
 " No bell
 autocmd VimEnter * set vb t_vb=
-autocmd Syntax mustache set foldmarker=[[[,]]]
-autocmd Syntax mustache set commentstring={{!%s}}
+autocmd Syntax mustache setlocal foldmarker=[[[,]]]
+autocmd Syntax mustache setlocal commentstring={{!%s}}
 " FileType
 " autocmd FileType javascript inoremap ; <esc>A;
 " autocmd FileType javascript inoremap . <esc>A.
 "}}}
 
-" cd"{{{
+" cd /Volumes/dev"{{{
 if isdirectory('/Volumes/dev/bm')
   cd /Volumes/dev/bm
 endif
