@@ -25,6 +25,7 @@ Plugin 'honza/vim-snippets'
 Plugin 'mattn/emmet-vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'mustache/vim-mustache-handlebars'
+Plugin 'evanmiller/nginx-vim-syntax'
 " Plugin 'gerw/vim-HiLinkTrace'
 "}}}
 
@@ -226,9 +227,9 @@ autocmd Syntax mustache setlocal commentstring={{!%s}}
 " autocmd FileType javascript inoremap . <esc>A.
 "}}}
 
-" cd /Volumes/dev"{{{
-if isdirectory('/Volumes/dev/bm')
-  cd /Volumes/dev/bm
+" cd ~/www/bm"{{{
+if isdirectory('~/www/bm')
+  cd ~/www/bm
 endif
 "}}}
 
