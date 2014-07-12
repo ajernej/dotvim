@@ -26,6 +26,7 @@ Plugin 'mattn/emmet-vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'kchmck/vim-coffee-script'
 " Plugin 'gerw/vim-HiLinkTrace'
 "}}}
 
@@ -36,6 +37,9 @@ nmap k gk
 nmap j gj
 nnoremap <silent>K :bd<cr>
 map . .`[
+nnoremap Q @q
+nmap <silent> gn :cnext<cr>
+nmap <silent> gN :cprev<cr>
 
 " Move around splits with <c-hjkl>
 nnoremap <c-j> <c-w>j
@@ -155,6 +159,7 @@ set background=dark
 colorscheme monokaibright
 
 set list
+set cursorline
 set listchars=tab:\ \ ,eol:¬
 set fillchars=fold:\ 
 set guifont=Menlo:h14
