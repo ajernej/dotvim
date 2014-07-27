@@ -58,6 +58,13 @@ xmap <silent> <leader>/ :TComment<cr>
 nmap <silent> <leader>b :b#<cr>
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
+if has("gui_macvim")
+  noremap <D-1> :tabn 1<CR>
+  noremap <D-2> :tabn 2<CR>
+  noremap <D-3> :tabn 3<CR>
+  noremap <D-4> :tabn 4<CR>
+  noremap <D-5> :tabn 5<CR>
+endif
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
@@ -116,7 +123,7 @@ set foldmethod=marker
 set foldcolumn=0
 set autoread
 
-set wildignore+=.git,node_modules/**
+set wildignore+=.git,node_modules/**,.git/**
 set pumheight=10
 let &previewheight=&lines / 2
 
@@ -127,9 +134,10 @@ set nowrap
 
 set foldtext=MyFoldText()
 function! StripFoldText(f, m)
-   let c = substitute(&commentstring, '%s', a:m, '')
-   let f = substitute(a:f, c, '', '')
-   let f = substitute(f, a:m, '', '')
+   let c = substitute(&commentstring, '%s', a:m, '')  " replace the commentstring %s with the real one
+   let c = substitute(c, '\*', '\\*', 'g')            " escape * if present
+   let f = substitute(a:f, c, '', '')                 " strip the commentstring with marker
+   let f = substitute(f, a:m, '', '')                 " strip the marker only
    return f
 endfunction
 function! MyFoldText()
@@ -227,15 +235,9 @@ autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R
 autocmd VimEnter * set vb t_vb=
 autocmd Syntax mustache setlocal foldmarker=[[[,]]]
 autocmd Syntax mustache setlocal commentstring={{!%s}}
+
+autocmd BufEnter * exec ":silent! :Gcd"
 " FileType
 " autocmd FileType javascript inoremap ; <esc>A;
 " autocmd FileType javascript inoremap . <esc>A.
 "}}}
-
-" cd ~/www/bm"{{{
-if isdirectory('~/www/bm')
-  cd ~/www/bm
-endif
-"}}}
-
-" vim:fdm=marker:

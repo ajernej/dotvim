@@ -197,4 +197,4 @@ hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=N
 delcommand Hi
 
 match Todo /FIXME\|TODO\|fixme\|todo/
-2match Comment /console.log.*/
+2match VIOLET /SELECT\|BY\|ORDER\|WHERE\|FROM\|AND\|UPDATE\|\ AS/
