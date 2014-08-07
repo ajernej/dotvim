@@ -15,19 +15,20 @@ Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'Shougo/neocomplete.vim'
 Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
 Plugin 'SirVer/ultisnips'
 Plugin 'honza/vim-snippets'
-Plugin 'mattn/emmet-vim'
 Plugin 'tmhedberg/matchit'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'kchmck/vim-coffee-script'
+Plugin 'godlygeek/tabular'
 " Plugin 'gerw/vim-HiLinkTrace'
+Plugin 'Valloric/YouCompleteMe'
+Plugin 'mxw/vim-jsx'
 "}}}
 
 " MISC KEY MAPS"{{{
@@ -35,9 +36,11 @@ let mapleader = ","
 nmap <tab> %
 nmap k gk
 nmap j gj
+
 nnoremap <silent>K :bd<cr>
 map . .`[
 nnoremap Q @q
+nnoremap * *``
 nmap <silent> gn :cnext<cr>
 nmap <silent> gN :cprev<cr>
 
@@ -65,6 +68,14 @@ if has("gui_macvim")
   noremap <D-4> :tabn 4<CR>
   noremap <D-5> :tabn 5<CR>
 endif
+" if exists(":Tabularize")
+nmap <Leader># :Tab /#<cr>
+vmap <Leader># :Tab /#<cr>
+nmap <Leader>: :Tab /:\zs<cr>
+vmap <Leader>: :Tab /:\zs<cr>
+nmap <Leader>= :Tab /=<cr>
+vmap <Leader>= :Tab /=<cr>
+" endif
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
@@ -132,6 +143,9 @@ set textwidth=0
 set wrapmargin=0
 set nowrap
 
+set autochdir
+" set iskeyword+=<,>
+
 set foldtext=MyFoldText()
 function! StripFoldText(f, m)
    let c = substitute(&commentstring, '%s', a:m, '')  " replace the commentstring %s with the real one
@@ -188,20 +202,27 @@ set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)
 
 "}}}
 " PLUGINS CONFIG"{{{
-let g:neocomplete#enable_at_startup = 1
-let g:neocomplete#enable_smart_case = 1
-let delimitMate_expand_cr = 1
+" let g:neocomplete#enable_at_startup = 1
+" let g:neocomplete#enable_smart_case = 1
+
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+
+" let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_clear_cache_on_exit = 1
+
 let g:syntastic_auto_jump = 1
 let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
    \ 'mode': 'active',
    \ 'passive_filetypes': ['html'] }
-let g:user_emmet_expandabbr_key = '<S-space>'
 
+" let g:user_emmet_expandabbr_key = '<S-space>'
 
 function! g:smart_tab()
    call UltiSnips#ExpandSnippet()
@@ -236,8 +257,13 @@ autocmd VimEnter * set vb t_vb=
 autocmd Syntax mustache setlocal foldmarker=[[[,]]]
 autocmd Syntax mustache setlocal commentstring={{!%s}}
 
-autocmd BufEnter * exec ":silent! :Gcd"
+autocmd Syntax coffee noremap <buffer> gf $gf
+autocmd Syntax php noremap <buffer> gf 0f.gf
+" autocmd BufEnter *.coffee noremap <buffer> gf $gf
+
+" autocmd BufEnter * exec ":silent! :Gcd"
 " FileType
 " autocmd FileType javascript inoremap ; <esc>A;
 " autocmd FileType javascript inoremap . <esc>A.
 "}}}
+

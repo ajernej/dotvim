@@ -190,6 +190,9 @@ Hi gitcommitSelectedType GREEN
 hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
 
 Hi qfFileName YELLOW
+Hi mustacheHelpers VIOLET
+Hi mustacheConditionals VIOLET
+Hi mustacheString WHITE
 
 hi SpellBad ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
@@ -197,4 +200,3 @@ hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=N
 delcommand Hi
 
 match Todo /FIXME\|TODO\|fixme\|todo/
-2match VIOLET /SELECT\|BY\|ORDER\|WHERE\|FROM\|AND\|UPDATE\|\ AS/
