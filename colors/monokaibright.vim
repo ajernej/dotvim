@@ -108,13 +108,13 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
+" hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=none
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
 hi CursorLineNr guibg=#414243 gui=NONE guifg=#888888
-hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
+hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=italic
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#414243 gui=NONE guifg=#E6E1DC
 hi StatusLineNC guibg=#414243 gui=NONE
@@ -156,7 +156,8 @@ hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NON
 Hi DiffAdd GREEN
 Hi DiffDelete RED
 
-hi Folded guifg=#888888 guibg=NONE ctermbg=NONE gui=NONE
+" hi Folded guifg=#888888 guibg=NONE ctermbg=NONE gui=NONE
+hi Folded guifg=#AAAAAA guibg=NONE ctermbg=NONE gui=italic
 
 Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE

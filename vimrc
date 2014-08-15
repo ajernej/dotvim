@@ -14,6 +14,7 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
+" Plugin 'tpope/vim-commentary'
 Plugin 'Raimondi/delimitMate'
 Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
@@ -28,7 +29,6 @@ Plugin 'kchmck/vim-coffee-script'
 Plugin 'godlygeek/tabular'
 " Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'Valloric/YouCompleteMe'
-Plugin 'mxw/vim-jsx'
 "}}}
 
 " MISC KEY MAPS"{{{
@@ -37,10 +37,11 @@ nmap <tab> %
 nmap k gk
 nmap j gj
 
+nnoremap gf $F.gf
 nnoremap <silent>K :bd<cr>
 map . .`[
 nnoremap Q @q
-nnoremap * *``
+nnoremap * *``:set hlsearch<cr>
 nmap <silent> gn :cnext<cr>
 nmap <silent> gN :cprev<cr>
 
@@ -50,7 +51,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-nnoremap <silent> <esc><esc> :nohlsearch<cr>
+nnoremap <silent> <esc><esc> :set nohlsearch<cr>
 nnoremap <silent> <cr> :w<cr>
 nnoremap <space> za
 nnoremap <S-space> zM
@@ -95,7 +96,6 @@ set laststatus=2
 set showmatch
 set matchtime=2
 set incsearch
-set hlsearch
 " make searches case-sensitive only if they contain upper-case characters
 set ignorecase smartcase
 set number
@@ -256,14 +256,4 @@ autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R
 autocmd VimEnter * set vb t_vb=
 autocmd Syntax mustache setlocal foldmarker=[[[,]]]
 autocmd Syntax mustache setlocal commentstring={{!%s}}
-
-autocmd Syntax coffee noremap <buffer> gf $gf
-autocmd Syntax php noremap <buffer> gf 0f.gf
-" autocmd BufEnter *.coffee noremap <buffer> gf $gf
-
-" autocmd BufEnter * exec ":silent! :Gcd"
-" FileType
-" autocmd FileType javascript inoremap ; <esc>A;
-" autocmd FileType javascript inoremap . <esc>A.
 "}}}
-
