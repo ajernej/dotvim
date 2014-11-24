@@ -108,7 +108,20 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 
 " Modifications below
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
-" hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
+command -nargs=* Hi hi! def link <args>
+
+hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=NONE
+hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff gui=NONE
+hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
+hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
+hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
+hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 gui=italic
+hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#CCCCCC guibg=#272822 gui=NONE
+
+" hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
+Hi Normal WHITE
+
+hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=none
@@ -140,15 +153,6 @@ hi VertSplit guibg=#414243 gui=NONE guifg=#414243
 hi SignColumn ctermbg=NONE guibg=NONE
 hi SyntasticWarningSign ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
 
-hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=NONE
-hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff gui=NONE
-hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
-hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
-hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
-hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 gui=italic
-
-command -nargs=* Hi hi! def link <args>
-
 Hi Type BLUE
 
 hi DiffText ctermfg=148 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=inverse
@@ -157,7 +161,7 @@ Hi DiffAdd GREEN
 Hi DiffDelete RED
 
 " hi Folded guifg=#888888 guibg=NONE ctermbg=NONE gui=NONE
-hi Folded guifg=#AAAAAA guibg=NONE ctermbg=NONE gui=italic
+hi Folded guifg=#999999 guibg=NONE ctermbg=NONE gui=italic
 
 Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE

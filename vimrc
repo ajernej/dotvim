@@ -14,7 +14,6 @@ Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tomtom/tcomment_vim'
-" Plugin 'tpope/vim-commentary'
 Plugin 'Raimondi/delimitMate'
 Plugin 'othree/html5.vim'
 Plugin 'groenewege/vim-less'
@@ -39,6 +38,7 @@ nmap j gj
 
 nnoremap gf $F.gf
 nnoremap <silent>K :bd<cr>
+" nnoremap <silent>K :bp<bar>sp<bar>bn<bar>bd<CR>
 map . .`[
 nnoremap Q @q
 nnoremap * *``:set hlsearch<cr>
@@ -202,8 +202,8 @@ set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)
 
 "}}}
 " PLUGINS CONFIG"{{{
-" let g:neocomplete#enable_at_startup = 1
-" let g:neocomplete#enable_smart_case = 1
+let g:UltiSnipsSnippetsDir='~/.vim/snips'
+let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snips']
 
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
