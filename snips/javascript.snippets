@@ -1,0 +1,113 @@
+snippet log "console.log" b
+console.log('$1');
+endsnippet
+
+snippet req "require" w
+require('$1');
+endsnippet
+
+snippet /| "comment block" b
+/*
+|--------------------------------------------------------------------------
+| $1
+|--------------------------------------------------------------------------
+*/
+endsnippet
+
+snippet cc "create class/component" b
+var React = require('react');
+
+/*
+|--------------------------------------------------------------------------
+| $1
+|--------------------------------------------------------------------------
+*/
+
+var ${1:ClassName} = React.createClass({
+
+	render: function() {
+		return (
+			${VISUAL}$2
+		);
+	}
+
+});
+$0
+${3:module.exports = $1;}
+endsnippet
+
+snippet id "id" w
+id="$1"
+endsnippet
+
+snippet cn "" w
+className="$1"$2
+endsnippet
+
+snippet key "key" w
+key={ $1 }$2
+endsnippet
+
+
+snippet gis "get initial state" b
+getInitialState: function() {
+	return {
+		${1}: ${2}
+	};
+},$0
+endsnippet
+
+snippet times "times" b
+_.times($1, function(i) {
+	$2
+}, this);
+endsnippet
+
+snippet map "map" w
+map(function($1, i) {
+	$0
+});
+endsnippet
+
+# JSX
+
+snippet div "div" w
+<div>$0</div>
+endsnippet
+
+snippet button "button" w
+<button type="button">$0</button>
+endsnippet
+
+snippet span "span" w
+<span>$0</span>
+endsnippet
+
+snippet i "i" w
+<i>$0</i>
+endsnippet
+
+snippet b "b" w
+<b>$0</b>
+endsnippet
+
+snippet ul "ul" w
+<ul>$0</ul>
+endsnippet
+
+snippet li "li" w
+<li>$0</li>
+endsnippet
+
+snippet a "a" w
+<a href="#">$0</a>
+endsnippet
+
+snippet gf "comment" w
+{ /* $1 */ }
+endsnippet
+
+snippet = "div" i
+={ $0 }
+endsnippet
+

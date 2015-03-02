@@ -140,7 +140,8 @@ hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NON
 hi FoldMarker guifg=#888888 guibg=NONE ctermbg=NONE gui=inverse
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=gray guibg=#272822 gui=inverse
+hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
+" hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=gray guibg=#272822 gui=inverse
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=inverse,bold
@@ -177,6 +178,7 @@ Hi htmlArg GREEN
 Hi xmlTag WHITE
 Hi xmlTagName RED
 Hi xmlEndTag RED
+Hi xmlEndTagName RED
 Hi xmlAttrib GREEN
 
 Hi cssTagName GREEN

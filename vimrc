@@ -9,25 +9,30 @@ call vundle#rc()
 
 " PLUGINS "{{{
 Plugin 'gmarik/vundle'
-Plugin 'pangloss/vim-javascript'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
+Plugin 'tmhedberg/matchit'
 Plugin 'tomtom/tcomment_vim'
 Plugin 'Raimondi/delimitMate'
-Plugin 'othree/html5.vim'
-Plugin 'groenewege/vim-less'
 Plugin 'scrooloose/syntastic'
 Plugin 'kien/ctrlp.vim'
+Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
+Plugin 'junegunn/vim-easy-align'
+Plugin 'gerw/vim-HiLinkTrace'
+Plugin 'Yggdroot/indentLine'
+
 Plugin 'honza/vim-snippets'
-Plugin 'tmhedberg/matchit'
+Plugin 'groenewege/vim-less'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
 Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'kchmck/vim-coffee-script'
-Plugin 'godlygeek/tabular'
-" Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'Valloric/YouCompleteMe'
+Plugin 'mxw/vim-jsx'
+
+Plugin 'marijnh/tern_for_vim'
 "}}}
 
 " MISC KEY MAPS"{{{
@@ -36,7 +41,6 @@ nmap <tab> %
 nmap k gk
 nmap j gj
 
-nnoremap gf $F.gf
 nnoremap <silent>K :bd<cr>
 " nnoremap <silent>K :bp<bar>sp<bar>bn<bar>bd<CR>
 map . .`[
@@ -68,15 +72,13 @@ if has("gui_macvim")
   noremap <D-3> :tabn 3<CR>
   noremap <D-4> :tabn 4<CR>
   noremap <D-5> :tabn 5<CR>
+  noremap <D-j> }
+  noremap <D-k> {
 endif
-" if exists(":Tabularize")
-nmap <Leader># :Tab /#<cr>
-vmap <Leader># :Tab /#<cr>
-nmap <Leader>: :Tab /:\zs<cr>
-vmap <Leader>: :Tab /:\zs<cr>
-nmap <Leader>= :Tab /=<cr>
-vmap <Leader>= :Tab /=<cr>
-" endif
+" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
+vmap <Enter> <Plug>(EasyAlign)
+" Start interactive EasyAlign for a motion/text object (e.g. gaip)
+nmap ga <Plug>(EasyAlign)
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
@@ -103,13 +105,15 @@ set cmdheight=1
 set switchbuf=useopen
 set numberwidth=5
 set winwidth=79
-" This makes RVM work inside Vim. I have no idea why.
-set shell=bash
+
+" set shell=/bin/zsh
+set shell=/bin/bash\ -l
+
 " Prevent Vim from clobbering the scrollback buffer. See
 " http://www.shallowsky.com/linux/noaltscreen.html
 set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
-set scrolloff=3
+set scrolloff=2
 " Store temporary files in a central spot
 set backup
 set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
@@ -118,6 +122,7 @@ set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 set backspace=indent,eol,start
 " display incomplete commands
 set showcmd
+set completeopt-=preview
 " Enable highlighting for syntax
 syntax on
 " Enable file type detection.
@@ -132,6 +137,7 @@ set clipboard=unnamed
 set go-=L
 set foldmethod=marker
 set foldcolumn=0
+set foldopen-=block
 set autoread
 
 set wildignore+=.git,node_modules/**,.git/**
@@ -186,7 +192,7 @@ set listchars=tab:\ \ ,eol:¬
 set fillchars=fold:\ 
 set guifont=Menlo:h14
 
-set linespace=2
+set linespace=1
 set guioptions-=T
 set guioptions-=m
 set guioptions-=r
@@ -202,14 +208,19 @@ set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)
 
 "}}}
 " PLUGINS CONFIG"{{{
+let g:indentLine_char = ''
+let g:indentLine_color_gui = '#393939'
+let g:jsx_ext_required = 0
+
 let g:UltiSnipsSnippetsDir='~/.vim/snips'
-let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snips']
+" let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snips']
+let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
 
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
-" let delimitMate_expand_cr = 1
+let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -221,6 +232,7 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
    \ 'mode': 'active',
    \ 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers = ['jsxhint']
 
 " let g:user_emmet_expandabbr_key = '<S-space>'
 
@@ -239,7 +251,7 @@ function! g:smart_tab()
    return ""
    " endif
 endfunction
-let g:UltiSnipsJumpForwardTrigger="<tab>"
+let g:UltiSnipsJumpForwardTrigger="<cr>"
 "}}}
 " AUTOCMD"{{{
 " Reload on save
@@ -257,3 +269,24 @@ autocmd VimEnter * set vb t_vb=
 autocmd Syntax mustache setlocal foldmarker=[[[,]]]
 autocmd Syntax mustache setlocal commentstring={{!%s}}
 "}}}
+
+fun! g:findfile()
+   if !empty(matchstr(getline("."), '<'))
+      if !empty(matchstr(getline("."), '<Route'))
+         exe "norm! mz0/handler\<cr>Wve\"xygg"
+         call search(@x)
+         exe "norm! \"xyi'`z"
+         exe "edit " . @x
+      else
+         exe "norm! mz0f<wve\"xygg"
+         call search(@x)
+         exe "norm! \"xyi'`z"
+         exe "edit " . @x
+      endif
+   else
+      exe 'norm! $F.gf'
+   endif
+endf
+nnoremap <silent> gf :call g:findfile()<cr>
+
+autocmd FileType javascript setlocal omnifunc=tern#Complete
