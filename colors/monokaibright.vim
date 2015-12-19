@@ -123,6 +123,7 @@ Hi Normal WHITE
 
 hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
+" hi Cursor ctermfg=231 ctermbg=235 cterm=inverse guifg=#FFFFFF guibg=#272822 gui=inverse
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=none
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
@@ -141,11 +142,15 @@ hi FoldMarker guifg=#888888 guibg=NONE ctermbg=NONE gui=inverse
 
 hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
 hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
+" hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=#888888 guibg=#272822 gui=inverse
+" hi Search gui=underline
 " hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=gray guibg=#272822 gui=inverse
+" hi Search ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
-hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
+" hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=inverse,bold
 hi Todo ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi Todo ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
 
 hi Pmenu ctermbg=white ctermfg=235 guibg=white guifg=#2b2b2b
 hi PmenuSel ctermfg=235 ctermbg=81 guibg=#97b5dc guifg=#2B2B2B
@@ -168,6 +173,12 @@ Hi jsFunctionKey GREEN
 Hi jsFuncArgs ORANGE
 Hi jsFuncCall BLUE
 Hi jsSpecial VIOLET
+Hi jsStatic RED
+Hi jsObjectKey YELLOW
+Hi jsNoise RED
+
+" fixme
+Hi jsParensError WHITE
 
 Hi htmlTag WHITE
 Hi htmlTagName RED
@@ -201,9 +212,20 @@ Hi mustacheHelpers VIOLET
 Hi mustacheConditionals VIOLET
 Hi mustacheString WHITE
 
-hi SpellBad ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
-hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
+" Hi GitGutterAdd GREEN
+hi GitGutterAdd ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=bold
+" Hi GitGutterChange YELLOW
+hi GitGutterChange ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=bold
+" Hi GitGutterDelete RED
+hi GitGutterDelete ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=bold
+" Hi GitGutterChangeDelete RED
+hi GitGutterChangeDelete ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=bold
 
+" hi SpellBad ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
+" hi SpellCap ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
+
+hi SpellBad guifg=NONE guibg=NONE gui=underline ctermfg=white ctermbg=red cterm=NONE guisp=#f92672
+hi SpellCap guifg=NONE guibg=NONE gui=underline ctermfg=white ctermbg=red cterm=NONE guisp=#e6db74
 delcommand Hi
 
 match Todo /FIXME\|TODO\|fixme\|todo/

@@ -21,9 +21,15 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'Yggdroot/indentLine'
+Plugin 'easymotion/vim-easymotion'
+Plugin 'scrooloose/nerdtree'
+Plugin 'mattn/emmet-vim'
 
-Plugin 'honza/vim-snippets'
+if has("gui_running")
+   Plugin 'Yggdroot/indentLine'
+endif
+
+" Plugin 'honza/vim-snippets'
 Plugin 'groenewege/vim-less'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
@@ -31,8 +37,11 @@ Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
-
+Plugin 'elzr/vim-json'
 Plugin 'marijnh/tern_for_vim'
+Plugin 'airblade/vim-gitgutter'
+" Plugin 'rking/ag.vim'
+
 "}}}
 
 " MISC KEY MAPS"{{{
@@ -79,6 +88,8 @@ endif
 vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
+
+nmap s <Plug>(easymotion-s)
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
@@ -200,7 +211,9 @@ set guicursor+=n-v-ve:blinkoff0-Cursor
 set guicursor+=i:ver25-iCursor
 
 set statusline=%<%.99f\ %h%w%m%r\ 
-set statusline+=%{SL('fugitive#statusline')}\ %#ErrorMsg#%{SL('SyntasticStatuslineFlag')}%*
+" set statusline+=%{SL('fugitive#statusline')}\ %#warningmsg#%{SL('SyntasticStatuslineFlag')}%*
+set statusline+=%{SL('fugitive#statusline')}\ %#errormsg#%{SL('SyntasticStatuslineFlag')}%*
+" let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 set statusline+=%=
 set statusline+=\ %y\ 
 set statusline+=[%{&ff}]\ 
@@ -232,11 +245,14 @@ let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
    \ 'mode': 'active',
    \ 'passive_filetypes': ['html'] }
-let g:syntastic_javascript_checkers = ['jsxhint']
+let g:syntastic_javascript_checkers = ['eslint']
 
-" let g:user_emmet_expandabbr_key = '<S-space>'
+let javascript_enable_domhtmlcss = 1
 
-function! g:smart_tab()
+let g:user_emmet_expandabbr_key = '<S-space>'
+
+" -----
+function! g:Smart_tab()
    call UltiSnips#ExpandSnippet()
    if g:ulti_expand_res == 0
       if pumvisible()
@@ -251,7 +267,11 @@ function! g:smart_tab()
    return ""
    " endif
 endfunction
+
 let g:UltiSnipsJumpForwardTrigger="<cr>"
+autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:Smart_tab()<cr>"
+" -----
+
 "}}}
 " AUTOCMD"{{{
 " Reload on save
@@ -262,21 +282,28 @@ autocmd VimEnter * xmap <tab> >gv
 autocmd VimEnter * xmap <s-tab> <gv
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
-" Smart Tab
-autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:smart_tab()<cr>"
 " No bell
 autocmd VimEnter * set vb t_vb=
+autocmd BufNewFile,BufRead *rc set filetype=json
+autocmd BufNewFile,BufRead vimrc set filetype=vim
 autocmd Syntax mustache setlocal foldmarker=[[[,]]]
 autocmd Syntax mustache setlocal commentstring={{!%s}}
 "}}}
 
-fun! g:findfile()
+" autocmd FileType * 2match none
+autocmd FileType javascript 2match WHITE /;\|,\|<\//
+
+fun! g:Findfile()
    if !empty(matchstr(getline("."), '<'))
       if !empty(matchstr(getline("."), '<Route'))
-         exe "norm! mz0/handler\<cr>Wve\"xygg"
-         call search(@x)
-         exe "norm! \"xyi'`z"
-         exe "edit " . @x
+         if !empty(matchstr(getline("."), 'require'))
+            exe 'norm! $F.gf'
+         else
+            exe "norm! mz0/component\<cr>Wve\"xygg"
+            call search(@x)
+            exe "norm! \"xyi'`z"
+            exe "edit " . @x
+         endif
       else
          exe "norm! mz0f<wve\"xygg"
          call search(@x)
@@ -287,6 +314,72 @@ fun! g:findfile()
       exe 'norm! $F.gf'
    endif
 endf
-nnoremap <silent> gf :call g:findfile()<cr>
+nnoremap <silent> gf :call g:Findfile()<cr>
 
 autocmd FileType javascript setlocal omnifunc=tern#Complete
+" fixme:
+autocmd FileType php setlocal omnifunc=
+
+" map <D-k> :NERDTreeToggle<cr>
+
+" function! g:ExpandOrJump(direction)
+"    call UltiSnips#ExpandSnippet()
+"    if g:ulti_expand_res == 0
+"       " No expansion occurred.
+"       if pumvisible()
+"          " Pop-up is visible, let's select the next (or previous) completion.
+"          if a:direction == 'N'
+"             return "\<C-N>"
+"          else
+"             return "\<C-P>"
+"          endif
+"       else
+"          call UltiSnips#JumpForwards()
+"          if g:ulti_jump_forwards_res == 0
+"             " We did not jump forwards.
+"             return "\<Tab>"
+"          endif
+"       endif
+"    endif
+"
+"    " No popup is visible, a snippet was expanded, or we jumped, so nothing to do.
+"    return ''
+" endfunction
+
+" " YouCompleteMe and UltiSnips compatibility.
+" let g:UltiSnipsExpandTrigger = '<Tab>'
+" let g:UltiSnipsJumpForwardTrigger = '<Tab>'
+
+" " TODO: change UltiSnips to not try mapping if this is empty; setting this to
+" " <C-k> here rather than <S-Tab> to prevent it from getting clobbered in:
+" " ultisnips/pythonx/UltiSnips/snippet_manager.py: _map_inner_keys
+" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
+"
+" let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
+" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
+"
+" let g:ulti_jump_forwards_res = 0
+" let g:ulti_expand_res = 0
+
+" augroup WincentAutocomplete
+"    autocmd!
+"
+"    " Override late bindings set up by YouCompleteMe in autoload file.
+"    autocmd BufEnter * exec 'inoremap <silent> <Tab> <C-R>=g:ExpandOrJump("N")<CR>'
+"    autocmd BufEnter * exec 'inoremap <silent> <S-Tab> <C-R>=g:ExpandOrJump("P")<CR>'
+"
+"    " TODO: ideally would only do this while snippet is active
+"    " (see pythonx/UltiSnips/snippet_manager.py; might need to open a feature
+"    " request or a PR to have _map_inner_keys, _unmap_inner_keys fire off
+"    " autocommands that I can subscribe to)
+"    " BUG: seems you have to do <CR> twice to actual finalize completion
+"    " (this happens even with the standard <C-Y>
+"    inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "<CR>"
+" augroup END
+
+let g:vim_json_syntax_conceal = 0
+let g:gitgutter_sign_modified = '▪'
+let g:gitgutter_sign_modified_removed = '▪'
+let g:gitgutter_sign_column_always = 1
+
+nnoremap <leader>s vi{:sort<cr>
