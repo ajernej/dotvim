@@ -296,7 +296,7 @@ autocmd VimEnter * set vb t_vb=
 autocmd BufNewFile,BufRead *rc set filetype=json
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 
-autocmd FileType javascript 2match WHITE /;\|,\|<\//
+" autocmd FileType javascript 2match WHITE /;\|,\|<\//
 "}}}
 " FUNCTIONS"{{{
 fun! g:GoFile()
