@@ -2,42 +2,92 @@
 autocmd!
 set nocompatible
 filetype off
+let mapleader = ","
 
 set rtp+=~/.vim/bundle/vundle/
 call vundle#rc()
 "}}}
 
-" PLUGINS "{{{
 Plugin 'gmarik/vundle'
 Plugin 'tpope/vim-surround'
 Plugin 'tpope/vim-repeat'
 Plugin 'tpope/vim-fugitive'
 Plugin 'tmhedberg/matchit'
-Plugin 'tomtom/tcomment_vim'
-Plugin 'Raimondi/delimitMate'
-Plugin 'scrooloose/syntastic'
-Plugin 'kien/ctrlp.vim'
-Plugin 'Valloric/YouCompleteMe'
-Plugin 'SirVer/ultisnips'
-Plugin 'junegunn/vim-easy-align'
 Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'mattn/emmet-vim'
 Plugin 'groenewege/vim-less'
 Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
 Plugin 'evanmiller/nginx-vim-syntax'
+
+" Plugin 'YouCompleteMe'"{{{
+Plugin 'Valloric/YouCompleteMe'
+let g:ycm_complete_in_comments = 1
+let g:ycm_collect_identifiers_from_comments_and_strings = 1
+let g:ycm_seed_identifiers_with_syntax = 1
+"}}}
+" Plugin 'ultisnips'"{{{
+Plugin 'SirVer/ultisnips'
+let g:UltiSnipsSnippetsDir='~/.vim/snips'
+let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
+"}}}
+" Plugin 'ctrlp.vim'"{{{
+Plugin 'kien/ctrlp.vim'
+nmap <silent> <leader>p :CtrlP<cr>
+nmap <silent> <leader>t :CtrlPMRU<cr>
+let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
+let g:ctrlp_match_window = 'bottom,order:ttb'
+let g:ctrlp_clear_cache_on_exit = 1
+"}}}
+" Plugin 'vim-jsx'"{{{
 Plugin 'mxw/vim-jsx'
+let g:jsx_ext_required = 0
+"}}}
+" Plugin 'tcomment_vim'"{{{
+Plugin 'tomtom/tcomment_vim'
+nmap <silent> <leader>/ :TComment<cr>
+xmap <silent> <leader>/ :TComment<cr>
+"}}}
+" Plugin 'delimitMate'"{{{
+Plugin 'Raimondi/delimitMate'
+let delimitMate_expand_cr = 1
+let delimitMate_expand_space = 1
+"}}}
+" Plugin 'syntastic'"{{{
+Plugin 'scrooloose/syntastic'
+let g:syntastic_auto_jump = 1
+let g:syntastic_enable_signs = 0
+let g:syntastic_mode_map = {
+   \ 'mode': 'active',
+   \ 'passive_filetypes': ['html'] }
+let g:syntastic_javascript_checkers = ['eslint']
+"}}}
+" Plugin 'vim-easy-align'"{{{
+Plugin 'junegunn/vim-easy-align'
+vmap <Enter> <Plug>(EasyAlign)
+"}}}
+" Plugin 'emmet-vim'"{{{
+Plugin 'mattn/emmet-vim'
+let g:user_emmet_expandabbr_key = '<S-space>'
+"}}}
+" Plugin 'vim-javascript'"{{{
+Plugin 'pangloss/vim-javascript'
+let javascript_enable_domhtmlcss = 1
+"}}}
+" Plugin 'vim-gitgutter'"{{{
 Plugin 'airblade/vim-gitgutter'
-
-if has("gui_running")
-   Plugin 'Yggdroot/indentLine'
-endif
-
-
+let g:gitgutter_sign_modified = '▪'
+let g:gitgutter_sign_modified_removed = '▪'
+let g:gitgutter_sign_column_always = 1
 "}}}
 
+if has("gui_running")
+   " Plugin 'indentLine'"{{{
+   Plugin 'Yggdroot/indentLine'
+   let g:indentLine_char = ''
+   let g:indentLine_color_gui = '#393939'
+"}}}
+endif
+
 " MISC KEY MAPS"{{{
-let mapleader = ","
 nmap <tab> %
 nmap k gk
 nmap j gj
@@ -61,24 +111,7 @@ nnoremap <space> za
 nnoremap <S-space> zM
 
 nmap <silent> <leader>ev :e ~/.vim/vimrc<cr>
-nmap <silent> <leader>/ :TComment<cr>
-xmap <silent> <leader>/ :TComment<cr>
 nmap <silent> <leader>b :b#<cr>
-nmap <silent> <leader>p :CtrlP<cr>
-nmap <silent> <leader>t :CtrlPMRU<cr>
-if has("gui_macvim")
-  noremap <D-1> :tabn 1<CR>
-  noremap <D-2> :tabn 2<CR>
-  noremap <D-3> :tabn 3<CR>
-  noremap <D-4> :tabn 4<CR>
-  noremap <D-5> :tabn 5<CR>
-  noremap <D-j> }
-  noremap <D-k> {
-endif
-" Start interactive EasyAlign in visual mode (e.g. vip<Enter>)
-vmap <Enter> <Plug>(EasyAlign)
-" Start interactive EasyAlign for a motion/text object (e.g. gaip)
-nmap ga <Plug>(EasyAlign)
 
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
@@ -206,53 +239,6 @@ set statusline+=%=
 set statusline+=\ %y\ 
 set statusline+=[%{&ff}]\ 
 set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)?\",B\":\"\").\"\\"}%k]\ 
-
-"}}}
-" PLUGINS CONFIG"{{{
-
-" indentLine
-let g:indentLine_char = ''
-let g:indentLine_color_gui = '#393939'
-
-" jsx
-let g:jsx_ext_required = 0
-
-" UltiSnips
-let g:UltiSnipsSnippetsDir='~/.vim/snips'
-let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
-
-" YouCompleteMe
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-
-" delimitMate
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
-
-" CtrlP
-let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
-let g:ctrlp_match_window = 'bottom,order:ttb'
-let g:ctrlp_clear_cache_on_exit = 1
-
-" syntastic
-let g:syntastic_auto_jump = 1
-let g:syntastic_enable_signs = 0
-let g:syntastic_mode_map = {
-   \ 'mode': 'active',
-   \ 'passive_filetypes': ['html'] }
-let g:syntastic_javascript_checkers = ['eslint']
-
-" javascript
-let javascript_enable_domhtmlcss = 1
-
-" emmet
-let g:user_emmet_expandabbr_key = '<S-space>'
-
-" gitgutter
-let g:gitgutter_sign_modified = '▪'
-let g:gitgutter_sign_modified_removed = '▪'
-let g:gitgutter_sign_column_always = 1
 
 "}}}
 " SUPERTAB"{{{
