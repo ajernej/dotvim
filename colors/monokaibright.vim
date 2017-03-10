@@ -116,10 +116,11 @@ hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
 hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
 hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
 hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 gui=italic
-hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#CCCCCC guibg=#272822 gui=NONE
+" hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#CCCCCC guibg=#272822 gui=NONE
+hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#D1D1D1 guibg=#272822 gui=NONE
 
 " hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
-Hi Normal WHITE
+hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#D1D1D1 guibg=#272822 gui=NONE
 
 hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE

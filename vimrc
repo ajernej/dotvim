@@ -22,7 +22,6 @@ Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'easymotion/vim-easymotion'
-Plugin 'scrooloose/nerdtree'
 Plugin 'mattn/emmet-vim'
 
 if has("gui_running")
@@ -33,12 +32,12 @@ endif
 Plugin 'groenewege/vim-less'
 Plugin 'othree/html5.vim'
 Plugin 'pangloss/vim-javascript'
-Plugin 'mustache/vim-mustache-handlebars'
+" Plugin 'mustache/vim-mustache-handlebars'
 Plugin 'evanmiller/nginx-vim-syntax'
 Plugin 'kchmck/vim-coffee-script'
 Plugin 'mxw/vim-jsx'
 Plugin 'elzr/vim-json'
-Plugin 'marijnh/tern_for_vim'
+" Plugin 'marijnh/tern_for_vim'
 Plugin 'airblade/vim-gitgutter'
 " Plugin 'rking/ag.vim'
 
@@ -316,11 +315,9 @@ fun! g:Findfile()
 endf
 nnoremap <silent> gf :call g:Findfile()<cr>
 
-autocmd FileType javascript setlocal omnifunc=tern#Complete
+" autocmd FileType javascript setlocal omnifunc=tern#Complete
 " fixme:
 autocmd FileType php setlocal omnifunc=
-
-" map <D-k> :NERDTreeToggle<cr>
 
 " function! g:ExpandOrJump(direction)
 "    call UltiSnips#ExpandSnippet()
