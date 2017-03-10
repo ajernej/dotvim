@@ -21,25 +21,18 @@ Plugin 'Valloric/YouCompleteMe'
 Plugin 'SirVer/ultisnips'
 Plugin 'junegunn/vim-easy-align'
 Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'easymotion/vim-easymotion'
 Plugin 'mattn/emmet-vim'
+Plugin 'groenewege/vim-less'
+Plugin 'othree/html5.vim'
+Plugin 'pangloss/vim-javascript'
+Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'mxw/vim-jsx'
+Plugin 'airblade/vim-gitgutter'
 
 if has("gui_running")
    Plugin 'Yggdroot/indentLine'
 endif
 
-" Plugin 'honza/vim-snippets'
-Plugin 'groenewege/vim-less'
-Plugin 'othree/html5.vim'
-Plugin 'pangloss/vim-javascript'
-" Plugin 'mustache/vim-mustache-handlebars'
-Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'kchmck/vim-coffee-script'
-Plugin 'mxw/vim-jsx'
-Plugin 'elzr/vim-json'
-" Plugin 'marijnh/tern_for_vim'
-Plugin 'airblade/vim-gitgutter'
-" Plugin 'rking/ag.vim'
 
 "}}}
 
@@ -50,7 +43,6 @@ nmap k gk
 nmap j gj
 
 nnoremap <silent>K :bd<cr>
-" nnoremap <silent>K :bp<bar>sp<bar>bn<bar>bd<CR>
 map . .`[
 nnoremap Q @q
 nnoremap * *``:set hlsearch<cr>
@@ -88,7 +80,6 @@ vmap <Enter> <Plug>(EasyAlign)
 " Start interactive EasyAlign for a motion/text object (e.g. gaip)
 nmap ga <Plug>(EasyAlign)
 
-nmap s <Plug>(easymotion-s)
 "}}}
 " BASIC EDITING CONFIGURATION"{{{
 set encoding=utf-8
@@ -210,9 +201,7 @@ set guicursor+=n-v-ve:blinkoff0-Cursor
 set guicursor+=i:ver25-iCursor
 
 set statusline=%<%.99f\ %h%w%m%r\ 
-" set statusline+=%{SL('fugitive#statusline')}\ %#warningmsg#%{SL('SyntasticStatuslineFlag')}%*
 set statusline+=%{SL('fugitive#statusline')}\ %#errormsg#%{SL('SyntasticStatuslineFlag')}%*
-" let g:syntastic_stl_format = '[%E{Err: %fe #%e}%B{, }%W{Warn: %fw #%w}]'
 set statusline+=%=
 set statusline+=\ %y\ 
 set statusline+=[%{&ff}]\ 
@@ -220,25 +209,33 @@ set statusline+=[%{\"\".(&fenc==\"\"?&enc:&fenc).((exists(\"+bomb\")\ &&\ &bomb)
 
 "}}}
 " PLUGINS CONFIG"{{{
+
+" indentLine
 let g:indentLine_char = ''
 let g:indentLine_color_gui = '#393939'
+
+" jsx
 let g:jsx_ext_required = 0
 
+" UltiSnips
 let g:UltiSnipsSnippetsDir='~/.vim/snips'
-" let g:UltiSnipsSnippetDirectories=['UltiSnips', 'snips']
 let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
 
+" YouCompleteMe
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
 
+" delimitMate
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
+" CtrlP
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_clear_cache_on_exit = 1
 
+" syntastic
 let g:syntastic_auto_jump = 1
 let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
@@ -246,53 +243,77 @@ let g:syntastic_mode_map = {
    \ 'passive_filetypes': ['html'] }
 let g:syntastic_javascript_checkers = ['eslint']
 
+" javascript
 let javascript_enable_domhtmlcss = 1
 
+" emmet
 let g:user_emmet_expandabbr_key = '<S-space>'
 
-" -----
-function! g:Smart_tab()
-   call UltiSnips#ExpandSnippet()
-   if g:ulti_expand_res == 0
-      if pumvisible()
-         return "\<C-n>"
-      else
-         call UltiSnips#JumpForwards()
-         if g:ulti_jump_forwards_res == 0
-            return "\<tab>"
-         endif
-      endif
-   endif
-   return ""
-   " endif
-endfunction
-
-let g:UltiSnipsJumpForwardTrigger="<cr>"
-autocmd BufEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger . " <C-R>=g:Smart_tab()<cr>"
-" -----
+" gitgutter
+let g:gitgutter_sign_modified = '▪'
+let g:gitgutter_sign_modified_removed = '▪'
+let g:gitgutter_sign_column_always = 1
 
 "}}}
+" SUPERTAB"{{{
+function! g:UltiSnips_Complete()
+  call UltiSnips#ExpandSnippet()
+  if g:ulti_expand_res == 0
+    if pumvisible()
+      return "\<C-n>"
+    else
+      call UltiSnips#JumpForwards()
+      if g:ulti_jump_forwards_res == 0
+        return "\<TAB>"
+      endif
+    endif
+  endif
+  return ""
+endfunction
+
+function! g:UltiSnips_Reverse()
+  call UltiSnips#JumpBackwards()
+  if g:ulti_jump_backwards_res == 0
+    return "\<C-P>"
+  endif
+
+  return ""
+endfunction
+
+if !exists("g:UltiSnipsJumpForwardTrigger")
+  let g:UltiSnipsJumpForwardTrigger = "<tab>"
+endif
+
+if !exists("g:UltiSnipsJumpBackwardTrigger")
+  let g:UltiSnipsJumpBackwardTrigger="<s-tab>"
+endif
+
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
+au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+"}}}
 " AUTOCMD"{{{
+
 " Reload on save
 autocmd! bufwritepost ~/.vim/vimrc source ~/.vim/vimrc
 autocmd! bufwritepost monokaibright.vim colorscheme monokaibright
+
 " Tap indent in visual mode
 autocmd VimEnter * xmap <tab> >gv
 autocmd VimEnter * xmap <s-tab> <gv
+
 " Jump to last cursor position unless it's invalid or in an event handler
 autocmd BufReadPost * if line("'\"") > 0 && line("'\"") <= line("$") | exe "normal! g`\"" | endif
+
 " No bell
 autocmd VimEnter * set vb t_vb=
+
 autocmd BufNewFile,BufRead *rc set filetype=json
 autocmd BufNewFile,BufRead vimrc set filetype=vim
-autocmd Syntax mustache setlocal foldmarker=[[[,]]]
-autocmd Syntax mustache setlocal commentstring={{!%s}}
-"}}}
 
-" autocmd FileType * 2match none
 autocmd FileType javascript 2match WHITE /;\|,\|<\//
-
-fun! g:Findfile()
+"}}}
+" FUNCTIONS"{{{
+fun! g:GoFile()
    if !empty(matchstr(getline("."), '<'))
       if !empty(matchstr(getline("."), '<Route'))
          if !empty(matchstr(getline("."), 'require'))
@@ -313,70 +334,8 @@ fun! g:Findfile()
       exe 'norm! $F.gf'
    endif
 endf
-nnoremap <silent> gf :call g:Findfile()<cr>
+nnoremap <silent> gf :call g:GoFile()<cr>
+"}}}
 
-" autocmd FileType javascript setlocal omnifunc=tern#Complete
 " fixme:
 autocmd FileType php setlocal omnifunc=
-
-" function! g:ExpandOrJump(direction)
-"    call UltiSnips#ExpandSnippet()
-"    if g:ulti_expand_res == 0
-"       " No expansion occurred.
-"       if pumvisible()
-"          " Pop-up is visible, let's select the next (or previous) completion.
-"          if a:direction == 'N'
-"             return "\<C-N>"
-"          else
-"             return "\<C-P>"
-"          endif
-"       else
-"          call UltiSnips#JumpForwards()
-"          if g:ulti_jump_forwards_res == 0
-"             " We did not jump forwards.
-"             return "\<Tab>"
-"          endif
-"       endif
-"    endif
-"
-"    " No popup is visible, a snippet was expanded, or we jumped, so nothing to do.
-"    return ''
-" endfunction
-
-" " YouCompleteMe and UltiSnips compatibility.
-" let g:UltiSnipsExpandTrigger = '<Tab>'
-" let g:UltiSnipsJumpForwardTrigger = '<Tab>'
-
-" " TODO: change UltiSnips to not try mapping if this is empty; setting this to
-" " <C-k> here rather than <S-Tab> to prevent it from getting clobbered in:
-" " ultisnips/pythonx/UltiSnips/snippet_manager.py: _map_inner_keys
-" let g:UltiSnipsJumpBackwardTrigger = '<C-k>'
-"
-" let g:ycm_key_list_select_completion = ['<C-j>', '<C-n>', '<Down>']
-" let g:ycm_key_list_previous_completion = ['<C-k>', '<C-p>', '<Up>']
-"
-" let g:ulti_jump_forwards_res = 0
-" let g:ulti_expand_res = 0
-
-" augroup WincentAutocomplete
-"    autocmd!
-"
-"    " Override late bindings set up by YouCompleteMe in autoload file.
-"    autocmd BufEnter * exec 'inoremap <silent> <Tab> <C-R>=g:ExpandOrJump("N")<CR>'
-"    autocmd BufEnter * exec 'inoremap <silent> <S-Tab> <C-R>=g:ExpandOrJump("P")<CR>'
-"
-"    " TODO: ideally would only do this while snippet is active
-"    " (see pythonx/UltiSnips/snippet_manager.py; might need to open a feature
-"    " request or a PR to have _map_inner_keys, _unmap_inner_keys fire off
-"    " autocommands that I can subscribe to)
-"    " BUG: seems you have to do <CR> twice to actual finalize completion
-"    " (this happens even with the standard <C-Y>
-"    inoremap <expr> <CR> pumvisible() ? "\<C-Y>" : "<CR>"
-" augroup END
-
-let g:vim_json_syntax_conceal = 0
-let g:gitgutter_sign_modified = '▪'
-let g:gitgutter_sign_modified_removed = '▪'
-let g:gitgutter_sign_column_always = 1
-
-nnoremap <leader>s vi{:sort<cr>
