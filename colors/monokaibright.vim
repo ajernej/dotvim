@@ -22,7 +22,7 @@ hi StatusLine ctermfg=231 ctermbg=241 cterm=NONE guifg=#f8f8f2 guibg=#64645e gui
 hi StatusLineNC ctermfg=231 ctermbg=241 cterm=NONE guifg=#f8f8f2 guibg=#64645e gui=NONE
 hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=130 cterm=NONE guifg=NONE guibg=#9d550f gui=NONE
-hi IncSearch ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi IncSearch ctermfg=235 ctermbg=185 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Folded ctermfg=95 ctermbg=235 cterm=NONE guifg=#75715e guibg=#272822 gui=NONE
@@ -41,10 +41,10 @@ hi DiffText ctermfg=231 ctermbg=24 cterm=NONE guifg=#f8f8f2 guibg=#204a87 gui=NO
 hi ErrorMsg ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi WarningMsg ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 hi Float ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi Function ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
+hi Function ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
 hi Identifier ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
 hi Keyword ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
-hi Label ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi Label ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi NonText ctermfg=59 ctermbg=236 cterm=NONE guifg=#3b3a32 guibg=#31322c gui=NONE
 hi Number ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Operator ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
@@ -53,24 +53,24 @@ hi Special ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
 hi SpecialKey ctermfg=59 ctermbg=237 cterm=NONE guifg=#3b3a32 guibg=#3c3d37 gui=NONE
 hi Statement ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi StorageClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
-hi String ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi String ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi Tag ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi Title ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
 hi Todo ctermfg=95 ctermbg=NONE cterm=inverse guifg=#75715e guibg=NONE gui=inverse
 hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi rubyClass ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
-hi rubyFunction ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
+hi rubyFunction ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
 hi rubyInterpolationDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi rubySymbol ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi rubyConstant ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=italic
-hi rubyStringDelimiter ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi rubyStringDelimiter ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi rubyBlockParameter ctermfg=208 ctermbg=NONE cterm=NONE guifg=#fd971f guibg=NONE gui=italic
 hi rubyInstanceVariable ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi rubyInclude ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi rubyGlobalVariable ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi rubyRegexp ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
-hi rubyRegexpDelimiter ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi rubyRegexp ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi rubyRegexpDelimiter ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi rubyEscape ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi rubyControl ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi rubyClassVariable ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
@@ -96,12 +96,12 @@ hi javaScriptBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE g
 hi yamlKey ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi yamlAnchor ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi yamlAlias ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi yamlDocumentHeader ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
+hi yamlDocumentHeader ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi cssURL ctermfg=208 ctermbg=NONE cterm=NONE guifg=#fd971f guibg=NONE gui=italic
 hi cssFunctionName ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi cssColor ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi cssPseudoClassId ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
-hi cssClassName ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
+hi cssPseudoClassId ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
+hi cssClassName ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e guibg=NONE gui=NONE
 hi cssValueLength ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi cssCommonAttr ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
@@ -110,12 +110,12 @@ hi cssBraces ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 """"""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""""
 command -nargs=* Hi hi! def link <args>
 
-hi YELLOW ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=NONE
+hi YELLOW ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=NONE
 hi VIOLET ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff gui=NONE
 hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
-hi GREEN ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
+hi GREEN ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
 hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
-hi ORANGE ctermfg=130 ctermbg=NONE cterm=NONE guifg=#fd9720 gui=italic
+hi ORANGE ctermfg=214 ctermbg=NONE cterm=italic guifg=#fd9720 gui=italic
 " hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#CCCCCC guibg=#272822 gui=NONE
 " hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#D1D1D1 guibg=#272822 gui=NONE
 hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
@@ -128,8 +128,8 @@ hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NO
 " hi Cursor ctermfg=231 ctermbg=235 cterm=inverse guifg=#FFFFFF guibg=#272822 gui=inverse
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=none
-hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#333435 gui=none
-hi CursorLineNr guibg=#414243 gui=NONE guifg=#888888
+hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#49483e gui=none
+" hi CursorLineNr guibg=#49483e gui=NONE guifg=#888888
 hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=italic
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#414243 gui=NONE guifg=#E6E1DC
@@ -142,7 +142,8 @@ hi ModeMsg gui=NONE
 hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi FoldMarker guifg=#888888 guibg=NONE ctermbg=NONE gui=inverse
 
-hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
+" hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
+hi Visual ctermbg=240 cterm=NONE guibg=#49483e gui=NONE
 hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
 " hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=#888888 guibg=#272822 gui=inverse
 " hi Search gui=underline
@@ -151,7 +152,7 @@ hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
 " hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=inverse,bold
-hi Todo ctermfg=235 ctermbg=186 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi Todo ctermfg=235 ctermbg=185 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi Todo ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
 
 hi Pmenu ctermbg=white ctermfg=235 guibg=white guifg=#2b2b2b
@@ -159,11 +160,11 @@ hi PmenuSel ctermfg=235 ctermbg=81 guibg=#97b5dc guifg=#2B2B2B
 hi VertSplit guibg=#414243 gui=NONE guifg=#414243
 
 hi SignColumn ctermbg=NONE guibg=NONE
-hi SyntasticWarningSign ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
+hi SyntasticWarningSign ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
 
 Hi Type BLUE
 
-hi DiffText ctermfg=148 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=inverse
+hi DiffText ctermfg=154 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=inverse
 hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 Hi DiffAdd GREEN
 Hi DiffDelete RED
@@ -174,10 +175,10 @@ hi Folded guifg=#999999 guibg=NONE ctermbg=NONE gui=italic
 Hi jsFunctionKey GREEN
 Hi jsVariableDef GREEN
 Hi jsFuncArgs ORANGE
+Hi jsThis ORANGE
 Hi jsFuncCall BLUE
 Hi jsSpecial VIOLET
 Hi jsStatic RED
-" Hi jsObjectKey YELLOW
 Hi jsNoise WHITE
 Hi jsBuiltins BLUE
 Hi jsNull VIOLET
@@ -220,9 +221,9 @@ Hi mustacheConditionals VIOLET
 Hi mustacheString WHITE
 
 " Hi GitGutterAdd GREEN
-hi GitGutterAdd ctermfg=148 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=bold
+hi GitGutterAdd ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=bold
 " Hi GitGutterChange YELLOW
-hi GitGutterChange ctermfg=186 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=bold
+hi GitGutterChange ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 gui=bold
 " Hi GitGutterDelete RED
 hi GitGutterDelete ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=bold
 " Hi GitGutterChangeDelete RED

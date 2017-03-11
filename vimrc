@@ -296,6 +296,9 @@ autocmd VimEnter * set vb t_vb=
 autocmd BufNewFile,BufRead *rc set filetype=json
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 
+" autocmd FileType javascript set formatprg=prettier\ --stdin
+" autocmd FileType javascript.jsx set formatprg=prettier\ --stdin
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
 " autocmd FileType javascript 2match WHITE /;\|,\|<\//
 "}}}
 " FUNCTIONS"{{{
