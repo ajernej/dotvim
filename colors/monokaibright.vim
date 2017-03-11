@@ -25,12 +25,12 @@ hi PmenuSel ctermfg=NONE ctermbg=130 cterm=NONE guifg=NONE guibg=#9d550f gui=NON
 hi IncSearch ctermfg=235 ctermbg=185 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi Folded ctermfg=95 ctermbg=235 cterm=NONE guifg=#75715e guibg=#272822 gui=NONE
+hi Folded ctermfg=95 ctermbg=235 cterm=NONE guifg=#75715f guibg=#272822 gui=NONE
 
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
 hi Boolean ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Character ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi Comment ctermfg=95 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
+hi Comment ctermfg=245 ctermbg=NONE cterm=NONE guifg=#75715f guibg=NONE gui=NONE
 hi Conditional ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi Constant ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Define ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
@@ -56,7 +56,7 @@ hi StorageClass ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=
 hi String ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=NONE
 hi Tag ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
 hi Title ctermfg=231 ctermbg=NONE cterm=NONE guifg=#f8f8f2 guibg=NONE gui=NONE
-hi Todo ctermfg=95 ctermbg=NONE cterm=inverse guifg=#75715e guibg=NONE gui=inverse
+hi Todo ctermfg=95 ctermbg=NONE cterm=inverse guifg=#75715f guibg=NONE gui=inverse
 hi Type ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi Underlined ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi rubyClass ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 guibg=NONE gui=NONE
@@ -83,7 +83,7 @@ hi rubyRailsARMethod ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE
 hi rubyRailsRenderMethod ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi rubyRailsMethod ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi erubyDelimiter ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
-hi erubyComment ctermfg=95 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
+hi erubyComment ctermfg=95 ctermbg=NONE cterm=NONE guifg=#75715f guibg=NONE gui=NONE
 hi erubyRailsMethod ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef guibg=NONE gui=NONE
 hi htmlTag ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi htmlEndTag ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
@@ -116,21 +116,14 @@ hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
 hi GREEN ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
 hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
 hi ORANGE ctermfg=214 ctermbg=NONE cterm=italic guifg=#fd9720 gui=italic
-" hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#CCCCCC guibg=#272822 gui=NONE
-" hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#D1D1D1 guibg=#272822 gui=NONE
 hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
 
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
-" hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#D1D1D1 guibg=#272822 gui=NONE
-
 hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
-" hi Cursor ctermfg=231 ctermbg=235 cterm=inverse guifg=#FFFFFF guibg=#272822 gui=inverse
 
-hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=none
+hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=NONE
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#49483e gui=none
-" hi CursorLineNr guibg=#49483e gui=NONE guifg=#888888
-hi Comment ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=italic
 hi LineNr guifg=#888888 guibg=NONE ctermbg=NONE
 hi StatusLine guibg=#414243 gui=NONE guifg=#E6E1DC
 hi StatusLineNC guibg=#414243 gui=NONE
@@ -142,17 +135,13 @@ hi ModeMsg gui=NONE
 hi FoldColumn ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi FoldMarker guifg=#888888 guibg=NONE ctermbg=NONE gui=inverse
 
-" hi Visual ctermfg=231 ctermbg=130 cterm=NONE guifg=#f8f8f2 guibg=#9d550f gui=NONE
-hi Visual ctermbg=240 cterm=NONE guibg=#49483e gui=NONE
-hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
-" hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=#888888 guibg=#272822 gui=inverse
-" hi Search gui=underline
-" hi Search ctermfg=231 ctermbg=235 cterm=NONE guifg=gray guibg=#272822 gui=inverse
-" hi Search ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
+hi Visual ctermbg=237 cterm=NONE guibg=#49483e gui=NONE
+hi Search ctermbg=237 cterm=NONE guibg=#49483e gui=NONE
+" hi Search ctermbg=240 cterm=NONE guibg=#777777 gui=NONE
+" hi Search ctermbg=white ctermfg=235 guibg=#cccccc guifg=#2b2b2b gui=NONE
+
 hi Error ctermfg=231 ctermbg=197 cterm=NONE guifg=#f8f8f0 guibg=#f92672 gui=NONE
-" hi Todo ctermbg=235 guibg=#2B2B2B ctermfg=81 guifg=#66D9EF
 hi MatchParen ctermfg=102 ctermbg=237 cterm=NONE guifg=#90908a guibg=#3c3d37 gui=inverse,bold
-hi Todo ctermfg=235 ctermbg=185 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
 hi Todo ctermfg=235 ctermbg=81 cterm=NONE guibg=#97b5dc guifg=#2B2B2B gui=NONE
 
 hi Pmenu ctermbg=white ctermfg=235 guibg=white guifg=#2b2b2b
@@ -163,6 +152,7 @@ hi SignColumn ctermbg=NONE guibg=NONE
 hi SyntasticWarningSign ctermfg=185 ctermbg=NONE cterm=NONE guifg=#e6db74 guibg=NONE gui=inverse
 
 Hi Type BLUE
+Hi SearchCurrent IncSearch
 
 hi DiffText ctermfg=154 ctermbg=NONE cterm=inverse guifg=#a6e22e guibg=NONE gui=inverse
 hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
@@ -208,12 +198,12 @@ Hi lessNestedSelector GREEN
 Hi lessClass GREEN
 
 Hi CtrlPMode1 BLUE
-Hi CtrlPMatch YELLOW
-Hi CtrlPNoEntries RED
+Hi CtrlPMatch BLUE
+Hi CtrlPNoEntries ErrorMsg
 
 Hi gitcommitDiscardedType RED
 Hi gitcommitSelectedType GREEN
-hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715e guibg=NONE gui=NONE
+hi gitcommitHeader ctermfg=102 ctermbg=NONE cterm=NONE guifg=#75715f guibg=NONE gui=NONE
 
 Hi qfFileName YELLOW
 Hi mustacheHelpers VIOLET

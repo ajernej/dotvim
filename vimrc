@@ -17,6 +17,7 @@ Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'groenewege/vim-less'
 Plugin 'othree/html5.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
+Plugin 'timakro/vim-searchant'
 
 " Plugin 'YouCompleteMe'"{{{
 Plugin 'Valloric/YouCompleteMe'
@@ -30,7 +31,7 @@ let g:UltiSnipsSnippetsDir='~/.vim/snips'
 let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
 "}}}
 " Plugin 'ctrlp.vim'"{{{
-Plugin 'kien/ctrlp.vim'
+Plugin 'ctrlpvim/ctrlp.vim'
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
@@ -105,7 +106,7 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-nnoremap <silent> <esc><esc> :set nohlsearch<cr>
+" nnoremap <silent> <esc><esc> :set nohlsearch<cr>
 nnoremap <silent> <cr> :w<cr>
 nnoremap <space> za
 nnoremap <S-space> zM
@@ -328,3 +329,6 @@ nnoremap <silent> gf :call g:GoFile()<cr>
 
 " fixme:
 autocmd FileType php setlocal omnifunc=
+
+let g:searchant_map_stop = 0
+nmap <esc><esc> <Plug>SearchantStop
