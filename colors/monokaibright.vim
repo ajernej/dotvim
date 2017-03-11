@@ -166,14 +166,21 @@ Hi jsFunctionKey GREEN
 Hi jsVariableDef GREEN
 Hi jsFuncArgs ORANGE
 Hi jsThis ORANGE
+Hi jsSuper ORANGE
 Hi jsFuncCall BLUE
 Hi jsSpecial VIOLET
 Hi jsStatic RED
 Hi jsNoise WHITE
 Hi jsBuiltins BLUE
 Hi jsNull VIOLET
-Hi jsObjectKey WHITE
+Hi jsObjectKey YELLOW
 Hi jsObjectKeyComputed GREEN
+hi BLUE_italic ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=italic
+Hi jsGlobalObjects BLUE_italic
+Hi jsUndefined VIOLET
+Hi jsNan BLUE_italic
+Hi jsDot RED
+Hi jsObjectColon VIOLET
 
 " fixme
 Hi jsParensError WHITE
@@ -189,6 +196,7 @@ Hi xmlTagName RED
 Hi xmlEndTag WHITE
 Hi xmlEndTagName RED
 Hi xmlAttrib GREEN
+Hi xmlEqual RED
 
 Hi cssTagName GREEN
 Hi cssAttr BLUE

@@ -17,7 +17,6 @@ Plugin 'gerw/vim-HiLinkTrace'
 Plugin 'groenewege/vim-less'
 Plugin 'othree/html5.vim'
 Plugin 'evanmiller/nginx-vim-syntax'
-Plugin 'timakro/vim-searchant'
 
 " Plugin 'YouCompleteMe'"{{{
 Plugin 'Valloric/YouCompleteMe'
@@ -79,6 +78,11 @@ let g:gitgutter_sign_modified = '▪'
 let g:gitgutter_sign_modified_removed = '▪'
 let g:gitgutter_sign_column_always = 1
 "}}}
+" Plugin 'vim-searchant'"{{{
+Plugin 'timakro/vim-searchant'
+let g:searchant_map_stop = 0
+nmap <esc><esc> <Plug>SearchantStop
+"}}}
 
 if has("gui_running")
    " Plugin 'indentLine'"{{{
@@ -96,7 +100,7 @@ nmap j gj
 nnoremap <silent>K :bd<cr>
 map . .`[
 nnoremap Q @q
-nnoremap * *``:set hlsearch<cr>
+nnoremap * *``
 nmap <silent> gn :cnext<cr>
 nmap <silent> gN :cprev<cr>
 
@@ -106,7 +110,6 @@ nnoremap <c-k> <c-w>k
 nnoremap <c-h> <c-w>h
 nnoremap <c-l> <c-w>l
 
-" nnoremap <silent> <esc><esc> :set nohlsearch<cr>
 nnoremap <silent> <cr> :w<cr>
 nnoremap <space> za
 nnoremap <S-space> zM
@@ -297,10 +300,6 @@ autocmd VimEnter * set vb t_vb=
 autocmd BufNewFile,BufRead *rc set filetype=json
 autocmd BufNewFile,BufRead vimrc set filetype=vim
 
-" autocmd FileType javascript set formatprg=prettier\ --stdin
-" autocmd FileType javascript.jsx set formatprg=prettier\ --stdin
-" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-" autocmd FileType javascript 2match WHITE /;\|,\|<\//
 "}}}
 " FUNCTIONS"{{{
 fun! g:GoFile()
@@ -329,6 +328,3 @@ nnoremap <silent> gf :call g:GoFile()<cr>
 
 " fixme:
 autocmd FileType php setlocal omnifunc=
-
-let g:searchant_map_stop = 0
-nmap <esc><esc> <Plug>SearchantStop
