@@ -2,7 +2,8 @@
 
 ```
 git clone https://github.com/kirk1h/dotvim ~/.vim
-git clone https://github.com/gmarik/vundle.git ~/.vim/bundle/vundle
+curl -fLo ~/.vim/autoload/plug.vim --create-dirs \
+    https://raw.githubusercontent.com/junegunn/vim-plug/master/plug.vim
 rm ~/.vimrc
 ln -s ~/.vim/vimrc ~/.vimrc
 ```

@@ -1,96 +1,116 @@
-" -"{{{
-autocmd!
-set nocompatible
-filetype off
+" - {{{
+call plug#begin('~/.vim/plugged')
 let mapleader = ","
-
-set rtp+=~/.vim/bundle/vundle/
-call vundle#rc()
 "}}}
 
-Plugin 'gmarik/vundle'
-Plugin 'tpope/vim-surround'
-Plugin 'tpope/vim-repeat'
-Plugin 'tpope/vim-fugitive'
-Plugin 'tmhedberg/matchit'
-Plugin 'gerw/vim-HiLinkTrace'
-Plugin 'groenewege/vim-less'
-Plugin 'othree/html5.vim'
-Plugin 'evanmiller/nginx-vim-syntax'
+Plug 'tpope/vim-surround'
+Plug 'tpope/vim-repeat'
+Plug 'tpope/vim-fugitive'
+Plug 'tmhedberg/matchit'
+Plug 'gerw/vim-HiLinkTrace'
+Plug 'groenewege/vim-less'
+Plug 'othree/html5.vim'
+Plug 'evanmiller/nginx-vim-syntax'
 
-" Plugin 'YouCompleteMe'"{{{
-Plugin 'Valloric/YouCompleteMe'
+" Plug 'YouCompleteMe'"{{{
+
+Plug 'Valloric/YouCompleteMe'
 let g:ycm_complete_in_comments = 1
 let g:ycm_collect_identifiers_from_comments_and_strings = 1
 let g:ycm_seed_identifiers_with_syntax = 1
+
 "}}}
-" Plugin 'ultisnips'"{{{
-Plugin 'SirVer/ultisnips'
+" Plug 'ultisnips'"{{{
+
+Plug 'SirVer/ultisnips'
 let g:UltiSnipsSnippetsDir='~/.vim/snips'
 let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
+
 "}}}
-" Plugin 'ctrlp.vim'"{{{
-Plugin 'ctrlpvim/ctrlp.vim'
+" Plug 'ctrlp.vim'"{{{
+
+Plug 'ctrlpvim/ctrlp.vim'
 nmap <silent> <leader>p :CtrlP<cr>
 nmap <silent> <leader>t :CtrlPMRU<cr>
 let g:ctrlp_user_command = ['.git/', 'git --git-dir=%s/.git ls-files -oc --exclude-standard']
 let g:ctrlp_match_window = 'bottom,order:ttb'
 let g:ctrlp_clear_cache_on_exit = 1
+
 "}}}
-" Plugin 'vim-jsx'"{{{
-Plugin 'mxw/vim-jsx'
+" Plug 'vim-jsx'"{{{
+
+Plug 'mxw/vim-jsx'
 let g:jsx_ext_required = 0
+
 "}}}
-" Plugin 'tcomment_vim'"{{{
-Plugin 'tomtom/tcomment_vim'
+" Plug 'tcomment_vim'"{{{
+
+Plug 'tomtom/tcomment_vim'
 nmap <silent> <leader>/ :TComment<cr>
 xmap <silent> <leader>/ :TComment<cr>
+
 "}}}
-" Plugin 'delimitMate'"{{{
-Plugin 'Raimondi/delimitMate'
+" Plug 'delimitMate'"{{{
+
+Plug 'Raimondi/delimitMate'
 let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
+
 "}}}
-" Plugin 'syntastic'"{{{
-Plugin 'scrooloose/syntastic'
+" Plug 'syntastic'"{{{
+
+Plug 'scrooloose/syntastic'
 let g:syntastic_auto_jump = 1
 let g:syntastic_enable_signs = 0
 let g:syntastic_mode_map = {
    \ 'mode': 'active',
    \ 'passive_filetypes': ['html'] }
 let g:syntastic_javascript_checkers = ['eslint']
+
 "}}}
-" Plugin 'vim-easy-align'"{{{
-Plugin 'junegunn/vim-easy-align'
+" Plug 'vim-easy-align'"{{{
+
+Plug 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
+
 "}}}
-" Plugin 'emmet-vim'"{{{
-Plugin 'mattn/emmet-vim'
+" Plug 'emmet-vim'"{{{
+
+Plug 'mattn/emmet-vim'
 let g:user_emmet_expandabbr_key = '<S-space>'
+
 "}}}
-" Plugin 'vim-javascript'"{{{
-Plugin 'pangloss/vim-javascript'
+" Plug 'vim-javascript'"{{{
+
+Plug 'pangloss/vim-javascript', { 'frozen': 'true' }
 let javascript_enable_domhtmlcss = 1
+
 "}}}
-" Plugin 'vim-gitgutter'"{{{
-Plugin 'airblade/vim-gitgutter'
+" Plug 'vim-gitgutter'"{{{
+
+Plug 'airblade/vim-gitgutter'
 let g:gitgutter_sign_modified = '▪'
 let g:gitgutter_sign_modified_removed = '▪'
 let g:gitgutter_sign_column_always = 1
+
 "}}}
-" Plugin 'vim-searchant'"{{{
-Plugin 'timakro/vim-searchant'
+" Plug 'vim-searchant'"{{{
+
+Plug 'timakro/vim-searchant'
 let g:searchant_map_stop = 0
 nmap <esc><esc> <Plug>SearchantStop
+
 "}}}
 
 if has("gui_running")
-   " Plugin 'indentLine'"{{{
-   Plugin 'Yggdroot/indentLine'
+   " Plug 'indentLine'"{{{
+   Plug 'Yggdroot/indentLine'
    let g:indentLine_char = ''
    let g:indentLine_color_gui = '#393939'
 "}}}
 endif
+
+call plug#end()
 
 " MISC KEY MAPS"{{{
 nmap <tab> %
@@ -188,37 +208,6 @@ set wrapmargin=0
 set nowrap
 
 set autochdir
-" set iskeyword+=<,>
-
-set foldtext=MyFoldText()
-function! StripFoldText(f, m)
-   let c = substitute(&commentstring, '%s', a:m, '')  " replace the commentstring %s with the real one
-   let c = substitute(c, '\*', '\\*', 'g')            " escape * if present
-   let f = substitute(a:f, c, '', '')                 " strip the commentstring with marker
-   let f = substitute(f, a:m, '', '')                 " strip the marker only
-   return f
-endfunction
-function! MyFoldText()
-   let markerstart = strpart(&foldmarker, 0, 3)
-   let markerend = strpart(&foldmarker, 4, 3)
-   let foldstart = StripFoldText(getline(v:foldstart), markerstart)
-   let foldend = StripFoldText(getline(v:foldend), markerend)
-   let foldend = substitute(foldend,'^\s\+', '', '')
-   if (foldend == "")
-      return foldstart
-   else
-      return foldstart . " ... " . foldend
-   endif
-endfunction
-
-function! SL(function)
-  if exists('*'.a:function)
-    return call(a:function,[])
-  else
-    return ''
-  endif
-endfunction
-
 "}}}
 " COLOR AND GUI"{{{
 set background=dark
@@ -279,10 +268,9 @@ if !exists("g:UltiSnipsJumpBackwardTrigger")
 endif
 
 au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsExpandTrigger     . " <C-R>=g:UltiSnips_Complete()<cr>"
-au InsertEnter * exec "inoremap <silent> " .     g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
+au InsertEnter * exec "inoremap <silent> " . g:UltiSnipsJumpBackwardTrigger . " <C-R>=g:UltiSnips_Reverse()<cr>"
 "}}}
 " AUTOCMD"{{{
-
 " Reload on save
 autocmd! bufwritepost ~/.vim/vimrc source ~/.vim/vimrc
 autocmd! bufwritepost monokaibright.vim colorscheme monokaibright
@@ -302,6 +290,8 @@ autocmd BufNewFile,BufRead vimrc set filetype=vim
 
 "}}}
 " FUNCTIONS"{{{
+
+" GoFile {{{
 fun! g:GoFile()
    if !empty(matchstr(getline("."), '<'))
       if !empty(matchstr(getline("."), '<Route'))
@@ -323,7 +313,44 @@ fun! g:GoFile()
       exe 'norm! $F.gf'
    endif
 endf
+"}}}
 nnoremap <silent> gf :call g:GoFile()<cr>
+
+set foldtext=MyFoldText()
+" StripFoldText"{{{
+fun! StripFoldText(f, m)
+   let c = substitute(&commentstring, '%s', a:m, '')  " replace the commentstring %s with the real one
+   let c = substitute(c, '\*', '\\*', 'g')            " escape * if present
+   let f = substitute(a:f, c, '', '')                 " strip the commentstring with marker
+   let f = substitute(f, a:m, '', '')                 " strip the marker only
+   return f
+endf
+"}}}
+" MyFoldText"{{{
+fun! MyFoldText()
+   let markerstart = strpart(&foldmarker, 0, 3)
+   let markerend = strpart(&foldmarker, 4, 3)
+   let foldstart = StripFoldText(getline(v:foldstart), markerstart)
+   let foldend = StripFoldText(getline(v:foldend), markerend)
+   let foldend = substitute(foldend,'^\s\+', '', '')
+   if (foldend == "")
+      return foldstart
+   else
+      return foldstart . " ... " . foldend
+   endif
+endf
+"}}}
+
+" SL"{{{
+fun! SL(function)
+  if exists('*'.a:function)
+    return call(a:function,[])
+  else
+    return ''
+  endif
+endf
+"}}}
+
 "}}}
 
 " fixme:
