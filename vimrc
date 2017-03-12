@@ -7,7 +7,6 @@ Plug 'tpope/vim-surround'
 Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tmhedberg/matchit'
-Plug 'gerw/vim-HiLinkTrace'
 Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
 Plug 'evanmiller/nginx-vim-syntax'
@@ -106,6 +105,7 @@ if has("mac")
 endif
 
 if has("gui_running")
+   Plug 'gerw/vim-HiLinkTrace'
    " Plug 'indentLine'"{{{
    Plug 'Yggdroot/indentLine'
    let g:indentLine_char = ''

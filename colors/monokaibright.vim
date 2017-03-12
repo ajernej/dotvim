@@ -159,8 +159,7 @@ hi DiffChange ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NON
 Hi DiffAdd GREEN
 Hi DiffDelete RED
 
-" hi Folded guifg=#888888 guibg=NONE ctermbg=NONE gui=NONE
-hi Folded guifg=#999999 guibg=NONE ctermbg=NONE gui=italic
+hi Folded ctermfg=245 ctermbg=NONE cterm=NONE guifg=#888888 guibg=NONE gui=NONE
 
 Hi jsFunctionKey GREEN
 Hi jsVariableDef GREEN
