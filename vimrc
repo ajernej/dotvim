@@ -12,19 +12,10 @@ Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
 Plug 'evanmiller/nginx-vim-syntax'
 
-" Plug 'YouCompleteMe'"{{{
+" Plug 'vim-javascript'"{{{
 
-Plug 'Valloric/YouCompleteMe'
-let g:ycm_complete_in_comments = 1
-let g:ycm_collect_identifiers_from_comments_and_strings = 1
-let g:ycm_seed_identifiers_with_syntax = 1
-
-"}}}
-" Plug 'ultisnips'"{{{
-
-Plug 'SirVer/ultisnips'
-let g:UltiSnipsSnippetsDir='~/.vim/snips'
-let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
+Plug 'pangloss/vim-javascript', { 'frozen': 'true' }
+let javascript_enable_domhtmlcss = 1
 
 "}}}
 " Plug 'ctrlp.vim'"{{{
@@ -57,33 +48,10 @@ let delimitMate_expand_cr = 1
 let delimitMate_expand_space = 1
 
 "}}}
-" Plug 'syntastic'"{{{
-
-Plug 'scrooloose/syntastic'
-let g:syntastic_auto_jump = 1
-let g:syntastic_enable_signs = 0
-let g:syntastic_mode_map = {
-   \ 'mode': 'active',
-   \ 'passive_filetypes': ['html'] }
-let g:syntastic_javascript_checkers = ['eslint']
-
-"}}}
 " Plug 'vim-easy-align'"{{{
 
 Plug 'junegunn/vim-easy-align'
 vmap <Enter> <Plug>(EasyAlign)
-
-"}}}
-" Plug 'emmet-vim'"{{{
-
-Plug 'mattn/emmet-vim'
-let g:user_emmet_expandabbr_key = '<S-space>'
-
-"}}}
-" Plug 'vim-javascript'"{{{
-
-Plug 'pangloss/vim-javascript', { 'frozen': 'true' }
-let javascript_enable_domhtmlcss = 1
 
 "}}}
 " Plug 'vim-gitgutter'"{{{
@@ -101,6 +69,41 @@ let g:searchant_map_stop = 0
 nmap <esc><esc> <Plug>SearchantStop
 
 "}}}
+
+if has("mac")
+   " Plug 'YouCompleteMe'"{{{
+
+   Plug 'Valloric/YouCompleteMe'
+   let g:ycm_complete_in_comments = 1
+   let g:ycm_collect_identifiers_from_comments_and_strings = 1
+   let g:ycm_seed_identifiers_with_syntax = 1
+
+   "}}}
+   " Plug 'ultisnips'"{{{
+
+   Plug 'SirVer/ultisnips'
+   let g:UltiSnipsSnippetsDir='~/.vim/snips'
+   let g:UltiSnipsSnippetDirectories=['snips' , 'UltiSnips']
+
+   "}}}
+   " Plug 'emmet-vim'"{{{
+
+   Plug 'mattn/emmet-vim'
+   let g:user_emmet_expandabbr_key = '<S-space>'
+
+   "}}}
+   " Plug 'syntastic'"{{{
+
+   Plug 'scrooloose/syntastic'
+   let g:syntastic_auto_jump = 1
+   let g:syntastic_enable_signs = 0
+   let g:syntastic_mode_map = {
+      \ 'mode': 'active',
+      \ 'passive_filetypes': ['html'] }
+   let g:syntastic_javascript_checkers = ['eslint']
+
+   "}}}
+endif
 
 if has("gui_running")
    " Plug 'indentLine'"{{{
