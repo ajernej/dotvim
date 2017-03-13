@@ -198,11 +198,14 @@ Hi xmlAttrib GREEN
 Hi xmlEqual RED
 
 Hi cssTagName GREEN
-Hi cssAttr BLUE
+Hi cssAttr BLUE_italic
 Hi cssSelectorOp RED
+Hi cssUnitDecorators RED
 
 Hi lessNestedSelector GREEN
 Hi lessClass GREEN
+Hi lessDefinition BLUE_italic
+Hi lessVariable RED
 
 Hi CtrlPMode1 BLUE
 Hi CtrlPMatch BLUE

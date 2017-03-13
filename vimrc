@@ -1,4 +1,4 @@
-" - {{{
+"{{{
 call plug#begin('~/.vim/plugged')
 let mapleader = ","
 "}}}
@@ -110,7 +110,7 @@ if has("gui_running")
    Plug 'Yggdroot/indentLine'
    let g:indentLine_char = ''
    let g:indentLine_color_gui = '#393939'
-"}}}
+   "}}}
 endif
 
 call plug#end()
@@ -339,7 +339,11 @@ fun! MyFoldText()
    let foldend = StripFoldText(getline(v:foldend), markerend)
    let foldend = substitute(foldend,'^\s\+', '', '')
    if (foldend == "")
-      return foldstart
+      if (foldstart == "")
+         return "..."
+      else
+         return foldstart . " ..."
+      endif
    else
       return foldstart . " ... " . foldend
    endif
