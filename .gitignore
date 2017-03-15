@@ -1,3 +1,4 @@
 .*
 !/.gitignore
+autoload/plug.vim.old
 plugged/**

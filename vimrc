@@ -8,7 +8,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tmhedberg/matchit'
 Plug 'groenewege/vim-less'
-Plug 'othree/html5.vim'
+" Plug 'othree/html5.vim'
 Plug 'evanmiller/nginx-vim-syntax'
 
 " Plug 'vim-javascript'"{{{
