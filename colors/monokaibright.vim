@@ -119,7 +119,7 @@ hi ORANGE ctermfg=214 ctermbg=NONE cterm=italic guifg=#fd9720 gui=italic
 hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
 
 hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
-hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
+" hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
 hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=NONE
@@ -206,6 +206,10 @@ Hi lessNestedSelector GREEN
 Hi lessClass GREEN
 Hi lessDefinition BLUE_italic
 Hi lessVariable RED
+
+Hi perlStatmentProc BLUE
+
+Hi jsonKeyword BLUE_italic
 
 Hi CtrlPMode1 BLUE
 Hi CtrlPMatch BLUE

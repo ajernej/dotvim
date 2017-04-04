@@ -8,7 +8,7 @@ Plug 'tpope/vim-repeat'
 Plug 'tpope/vim-fugitive'
 Plug 'tmhedberg/matchit'
 Plug 'groenewege/vim-less'
-" Plug 'othree/html5.vim'
+Plug 'othree/html5.vim'
 Plug 'evanmiller/nginx-vim-syntax'
 
 " Plug 'vim-javascript'"{{{
@@ -176,9 +176,10 @@ set t_ti= t_te=
 " keep more context when scrolling off the end of a buffer
 set scrolloff=2
 " Store temporary files in a central spot
-set backup
-set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
-set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+set nobackup
+set noswapfile
+" set backupdir=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
+" set directory=~/.vim-tmp,~/.tmp,~/tmp,/var/tmp,/tmp
 " allow backspacing over everything in insert mode
 set backspace=indent,eol,start
 " display incomplete commands
@@ -364,3 +365,6 @@ endf
 
 " fixme:
 autocmd FileType php setlocal omnifunc=
+
+" autocmd FileType javascript set formatprg=prettier\ --stdin\ --tab-width=2
+" autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
