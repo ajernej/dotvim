@@ -10,6 +10,7 @@ Plug 'tmhedberg/matchit'
 Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
 Plug 'evanmiller/nginx-vim-syntax'
+Plug 'ap/vim-css-color'
 
 " Plug 'vim-javascript'"{{{
 
@@ -123,7 +124,9 @@ nmap j gj
 nnoremap <silent>K :bd<cr>
 map . .`[
 nnoremap Q @q
-nnoremap * *``
+
+nnoremap <silent> * eb:let @/='\<<C-R>=expand("<cword>")<CR>\>'<CR>:set hls<CR>
+
 nmap <silent> gn :cnext<cr>
 nmap <silent> gN :cprev<cr>
 
@@ -293,6 +296,7 @@ autocmd VimEnter * set vb t_vb=
 
 autocmd BufNewFile,BufRead *rc set filetype=json
 autocmd BufNewFile,BufRead vimrc set filetype=vim
+autocmd BufNewFile,BufRead nginx.conf setlocal commentstring=#\ %s
 
 "}}}
 " FUNCTIONS"{{{
