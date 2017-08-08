@@ -2,6 +2,12 @@ snippet log "console.log" b
 console.log('$1');
 endsnippet
 
+snippet () "func"
+($1) => {
+	$2
+}
+endsnippet
+
 snippet /| "comment block" b
 /*
 |--------------------------------------------------------------------------
@@ -11,7 +17,8 @@ snippet /| "comment block" b
 endsnippet
 
 snippet cc "create class/component" b
-import React, { Component, PropTypes } from 'react';
+import React, { Component } from 'react';
+// import PropTypes from 'prop-types';
 
 /*
 |--------------------------------------------------------------------------

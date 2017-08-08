@@ -69,6 +69,11 @@ let g:searchant_map_stop = 0
 nmap <esc><esc> <Plug>SearchantStop
 
 "}}}
+" Plug 'MatchTagAlways'
+
+Plug 'Valloric/MatchTagAlways'
+let g:mta_filetypes = { 'javascript.jsx': 1, 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 }
+
 
 if has("mac")
    " Plug 'YouCompleteMe'"{{{
@@ -102,7 +107,9 @@ if has("mac")
       \ 'passive_filetypes': ['html'] }
    let g:syntastic_javascript_checkers = ['eslint']
 
-   "}}}
+   " }}}
+   
+   Plug 'scrooloose/nerdtree'
 endif
 
 if has("gui_running")
@@ -308,15 +315,15 @@ fun! g:GoFile()
          if !empty(matchstr(getline("."), 'require'))
             exe 'norm! $F.gf'
          else
-            exe "norm! mz0/component\<cr>Wve\"xygg"
+            exe "norm! mz0/component\<cr>/{\<cr>wve\"xygg"
             call search(@x)
-            exe "norm! \"xyi'`z"
+            exe "norm! \"xyi\"`z"
             exe "edit " . @x
          endif
       else
          exe "norm! mz0f<wve\"xygg"
          call search(@x)
-         exe "norm! \"xyi'`z"
+         exe "norm! \"xyi\"`z"
          exe "edit " . @x
       endif
    else
@@ -372,3 +379,4 @@ autocmd FileType php setlocal omnifunc=
 
 " autocmd FileType javascript set formatprg=prettier\ --stdin\ --tab-width=2
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
+autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin\ --tab-width=3
