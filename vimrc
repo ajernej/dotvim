@@ -9,8 +9,10 @@ Plug 'tpope/vim-fugitive'
 Plug 'tmhedberg/matchit'
 Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
-Plug 'evanmiller/nginx-vim-syntax'
+Plug 'chr4/nginx.vim'
 Plug 'ap/vim-css-color'
+
+Plug 'vim-scripts/Arduino-syntax-file'
 
 " Plug 'vim-javascript'"{{{
 
@@ -59,7 +61,7 @@ vmap <Enter> <Plug>(EasyAlign)
 Plug 'airblade/vim-gitgutter'
 let g:gitgutter_sign_modified = '▪'
 let g:gitgutter_sign_modified_removed = '▪'
-let g:gitgutter_sign_column_always = 1
+" let g:gitgutter_sign_column_always = 1
 
 "}}}
 " Plug 'vim-searchant'"{{{
@@ -109,7 +111,7 @@ if has("mac")
 
    " }}}
    
-   Plug 'scrooloose/nerdtree'
+   " Plug 'scrooloose/nerdtree'
 endif
 
 if has("gui_running")

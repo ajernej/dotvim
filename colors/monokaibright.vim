@@ -9,8 +9,9 @@ if exists("syntax_on")
 endif
 
 let g:colors_name = "MonokaiBright"
+282923
 
-hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
+hi Cursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#282923 guibg=#f8f8f0 gui=NONE
 hi Visual ctermfg=NONE ctermbg=130 cterm=NONE guifg=NONE guibg=#9d550f gui=NONE
 hi CursorLine ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
 hi CursorColumn ctermfg=NONE ctermbg=237 cterm=NONE guifg=NONE guibg=#3c3d37 gui=NONE
@@ -22,12 +23,12 @@ hi StatusLine ctermfg=231 ctermbg=241 cterm=NONE guifg=#f8f8f2 guibg=#64645e gui
 hi StatusLineNC ctermfg=231 ctermbg=241 cterm=NONE guifg=#f8f8f2 guibg=#64645e gui=NONE
 hi Pmenu ctermfg=NONE ctermbg=NONE cterm=NONE guifg=NONE guibg=NONE gui=NONE
 hi PmenuSel ctermfg=NONE ctermbg=130 cterm=NONE guifg=NONE guibg=#9d550f gui=NONE
-hi IncSearch ctermfg=235 ctermbg=185 cterm=NONE guifg=#272822 guibg=#e6db74 gui=NONE
+hi IncSearch ctermfg=235 ctermbg=185 cterm=NONE guifg=#282923 guibg=#e6db74 gui=NONE
 hi Search ctermfg=NONE ctermbg=NONE cterm=underline guifg=NONE guibg=NONE gui=underline
 hi Directory ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
-hi Folded ctermfg=95 ctermbg=235 cterm=NONE guifg=#75715f guibg=#272822 gui=NONE
+hi Folded ctermfg=95 ctermbg=235 cterm=NONE guifg=#75715f guibg=#282923 gui=NONE
 
-hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#272822 gui=NONE
+hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#f8f8f2 guibg=#282923 gui=NONE
 hi Boolean ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Character ctermfg=141 ctermbg=NONE cterm=NONE guifg=#ae81ff guibg=NONE gui=NONE
 hi Comment ctermfg=245 ctermbg=NONE cterm=NONE guifg=#75715f guibg=NONE gui=NONE
@@ -116,11 +117,11 @@ hi BLUE ctermfg=81 ctermbg=NONE cterm=NONE guifg=#66d9ef gui=NONE
 hi GREEN ctermfg=154 ctermbg=NONE cterm=NONE guifg=#a6e22e gui=NONE
 hi RED ctermfg=197 ctermbg=NONE cterm=NONE guifg=#f92672 gui=NONE
 hi ORANGE ctermfg=214 ctermbg=NONE cterm=italic guifg=#fd9720 gui=italic
-hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
+hi WHITE ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#282923 gui=NONE
 
-hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#272822 gui=NONE
+hi Normal ctermfg=231 ctermbg=235 cterm=NONE guifg=#eeeeee guibg=#282923 gui=NONE
 hi Cursor ctermfg=148 ctermbg=NONE cterm=NONE guifg=#39FF14 guibg=black gui=inverse
-hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#272822 guibg=#f8f8f0 gui=NONE
+hi iCursor ctermfg=235 ctermbg=231 cterm=NONE guifg=#282923 guibg=#f8f8f0 gui=NONE
 
 hi CursorLine ctermfg=NONE ctermbg=NONE guifg=NONE guibg=NONE gui=NONE
 hi CursorLineNr ctermfg=102 ctermbg=237 guifg=#888888 guibg=#49483e gui=none
@@ -242,4 +243,4 @@ hi SpellBad guifg=NONE guibg=NONE gui=underline ctermfg=white ctermbg=red cterm=
 hi SpellCap guifg=NONE guibg=NONE gui=underline ctermfg=white ctermbg=red cterm=NONE guisp=#e6db74
 delcommand Hi
 
-match Todo /FIXME\|TODO\|fixme\|todo/
+match Todo /FIXME\|TODO\|fixme\|todo\|Fixme\|Todo/
