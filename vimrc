@@ -218,6 +218,9 @@ set wildignore+=.git,node_modules/**,.git/**
 set pumheight=10
 let &previewheight=&lines / 2
 
+set lines=50
+set columns=120
+
 " Get rid of wrapping
 set textwidth=0
 set wrapmargin=0
