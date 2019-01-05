@@ -11,7 +11,6 @@ Plug 'groenewege/vim-less'
 Plug 'othree/html5.vim'
 Plug 'chr4/nginx.vim'
 Plug 'ap/vim-css-color'
-
 Plug 'vim-scripts/Arduino-syntax-file'
 
 " Plug 'vim-javascript'"{{{
@@ -43,11 +42,17 @@ nmap <silent> <leader>/ :TComment<cr>
 xmap <silent> <leader>/ :TComment<cr>
 
 "}}}
-" Plug 'delimitMate'"{{{
+" Plug 'elzr/vim-json'{{{
+Plug 'elzr/vim-json'
+" g:vim_json_syntax_conceal = 0
+let g:indentLine_concealcursor=""
+"}}}
 
-Plug 'Raimondi/delimitMate'
-let delimitMate_expand_cr = 1
-let delimitMate_expand_space = 1
+" Plug 'jiangmiao/auto-pairs'{{{
+Plug 'jiangmiao/auto-pairs'
+let g:AutoPairsFlyMode = 1
+let g:AutoPairsCenterLine = 0
+let g:AutoPairsMultilineClose = 0
 
 "}}}
 " Plug 'vim-easy-align'"{{{
@@ -71,13 +76,14 @@ let g:searchant_map_stop = 0
 nmap <esc><esc> <Plug>SearchantStop
 
 "}}}
-" Plug 'MatchTagAlways'
+" Plug 'MatchTagAlways'{{{
 
 Plug 'Valloric/MatchTagAlways'
 let g:mta_filetypes = { 'javascript.jsx': 1, 'html' : 1, 'xhtml' : 1, 'xml' : 1, 'jinja' : 1 }
-
+"}}}
 
 if has("mac")
+   set macmeta
    " Plug 'YouCompleteMe'"{{{
 
    Plug 'Valloric/YouCompleteMe'
@@ -103,15 +109,13 @@ if has("mac")
 
    Plug 'scrooloose/syntastic'
    let g:syntastic_auto_jump = 1
-   let g:syntastic_enable_signs = 0
+   let g:syntastic_enable_signs = 1
    let g:syntastic_mode_map = {
       \ 'mode': 'active',
       \ 'passive_filetypes': ['html'] }
    let g:syntastic_javascript_checkers = ['eslint']
 
    " }}}
-   
-   " Plug 'scrooloose/nerdtree'
 endif
 
 if has("gui_running")
@@ -129,6 +133,7 @@ call plug#end()
 nmap <tab> %
 nmap k gk
 nmap j gj
+imap jj <esc>
 
 nnoremap <silent>K :bd<cr>
 map . .`[
@@ -384,4 +389,4 @@ autocmd FileType php setlocal omnifunc=
 
 " autocmd FileType javascript set formatprg=prettier\ --stdin\ --tab-width=2
 " autocmd BufWritePre *.js exe "normal! gggqG\<C-o>\<C-o>"
-autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin\ --tab-width=3
+" autocmd FileType javascript.jsx,javascript setlocal formatprg=prettier\ --stdin\ --tab-width=3
